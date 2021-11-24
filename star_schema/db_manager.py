@@ -29,7 +29,7 @@ class DatabaseManager():
             print("PostgreSQL connection is closed.")
 
 
-    def fact_event_table_record_exists(self, table: str, content: dict) -> bool: #TODO: Add support for automatic attributes?
+    def fact_event_table_record_exists(self, table: str, content: dict):
         try:
             condition_string = ''
             for index, (attribute, value) in enumerate(content.items()):
@@ -40,7 +40,7 @@ class DatabaseManager():
 
             self.cursor.execute(sql_query)
             record = self.cursor.fetchone()
-            return True if record is not None else False
+            return record if record is not None else None
         except (Exception, Error) as error:
             self.close_connection()
             raise Error(f"Error while fetching index from {table}", error)
@@ -83,22 +83,20 @@ class DatabaseManager():
             raise Error(f"Error while inserting into {table}", error)
 
 
-    def update_record(self, table: str, id: int, content: dict) -> int:
+    def update_record(self, table: str, content: dict, attribute_to_update: str, value_to_update: int) -> int:
         try:
-            update_string = ''
+            condition_string = ''
             for index, (attribute, value) in enumerate(content.items()):
-                update_string += f"{attribute}='{value}'"
-                if index+1 != len(content): update_string += ','
+                condition_string += f"{table}.{attribute}='{value}'"
+                if index+1 != len(content): condition_string += " AND "
 
-            sql_query = f"UPDATE {table} SET {update_string} WHERE id={id} RETURNING id"
-
+            sql_query = f"UPDATE {table} SET {attribute_to_update} = '{value_to_update}' WHERE {condition_string}"
+            # print(sql_query)
             self.cursor.execute(sql_query)
-            id = self.cursor.fetchone()[0]
             self.connection.commit()
-            return id
         except (Exception, Error) as error:
             self.close_connection()
-            raise Error(f"Error while updating record {id} in {table}", error)
+            raise Error(f"Error while updating record in {table}", error)
 
 
     def query(self, query_string: str) -> tuple:
