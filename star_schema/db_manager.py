@@ -1,10 +1,14 @@
+from datetime import datetime
+
 import psycopg2
 from psycopg2 import Error
+
+from italian_venues import ITALIAN_VENUES
 
 
 class DatabaseManager():
 
-    def __init__(self, user, password, database) -> None:
+    def __init__(self, user: str, password: str, database: str) -> None:
         self.connection = None
         try:
             self.connection = psycopg2.connect(user=f"{user}",
@@ -14,8 +18,8 @@ class DatabaseManager():
                                   database=f"{database}")
             self.cursor = self.connection.cursor()
         except (Exception, Error) as error:
-            print("Error while connecting to PostgreSQL", error)
             self.close_connection()
+            raise Error("Error while connecting to PostgreSQL", error)
 
 
     def close_connection(self):
@@ -25,24 +29,24 @@ class DatabaseManager():
             print("PostgreSQL connection is closed.")
 
 
-    def get_index_if_exists(self, table, content) -> int: #TODO: Add support for automatic attributes?
+    def fact_event_table_record_exists(self, table: str, content: dict) -> bool: #TODO: Add support for automatic attributes?
         try:
             condition_string = ''
             for index, (attribute, value) in enumerate(content.items()):
                 condition_string += f"{table}.{attribute}='{value}'"
-                if index+1 != len(content): condition_string += " AND"
+                if index+1 != len(content): condition_string += " AND "
 
-            sql_query = f"SELECT {table}.id FROM {table} WHERE {condition_string}"
+            sql_query = f"SELECT * FROM {table} WHERE {condition_string}"
 
             self.cursor.execute(sql_query)
             record = self.cursor.fetchone()
+            return True if record is not None else False
         except (Exception, Error) as error:
-            print(f"Error while fetching index from {table}", error)
             self.close_connection()
-        return record[0] if record is not None else None
+            raise Error(f"Error while fetching index from {table}", error)
 
 
-    def insert_into_table(self, table, content):
+    def insert_into_table(self, table: str, content: dict, id: str = 'id') -> int:
         try:
             attributes = ', '.join(content.keys())
             values = "', '".join(content.values())
@@ -51,21 +55,22 @@ class DatabaseManager():
             for index, (attribute, value) in enumerate(content.items()):
                 condition_string += f" {attribute}='{value}'"
                 if index+1 != len(content): condition_string += " AND"
+            id_string = f'{id},' if id is not None else ''
             sql_query = f'''
                 WITH s AS (
-                    SELECT id, {attributes}
+                    SELECT {id_string} {attributes}
                     FROM {table}
                     WHERE {condition_string}
                 ), i AS (
                     INSERT INTO {table} ({attributes})
                     SELECT '{values}'
                     WHERE NOT EXISTS (SELECT 1 FROM s)
-                    RETURNING id, {attributes}
+                    RETURNING {id_string} {attributes}
                 )
-                SELECT id, {attributes}
+                SELECT {id_string} {attributes}
                 FROM i
                 UNION ALL
-                SELECT id, {attributes}
+                SELECT {id_string} {attributes}
                 FROM s
             '''
 
@@ -74,11 +79,11 @@ class DatabaseManager():
             self.connection.commit()
             return id
         except (Exception, Error) as error:
-            print(f"Error while inserting into {table}", error)
             self.close_connection()
+            raise Error(f"Error while inserting into {table}", error)
 
 
-    def update_record(self, table, id, content):
+    def update_record(self, table: str, id: int, content: dict) -> int:
         try:
             update_string = ''
             for index, (attribute, value) in enumerate(content.items()):
@@ -92,25 +97,63 @@ class DatabaseManager():
             self.connection.commit()
             return id
         except (Exception, Error) as error:
-            print(f"Error while updating record {id} in {table}", error)
             self.close_connection()
+            raise Error(f"Error while updating record {id} in {table}", error)
 
 
-    def query(self, query_string):
+    def query(self, query_string: str) -> tuple:
         self.cursor.execute(query_string)
         return self.cursor.fetchall()
 
 
-    def increment_attribute_in_record(self, table, id, attribute):
+    def increment_attribute_in_record(self, table: str, content: dict, attribute_to_inc: str) -> None:
         try:
-            sql_query = f"UPDATE {table} SET {attribute} = {attribute} + 1 WHERE id={id}"
+            condition_string = ''
+            for index, (attribute, value) in enumerate(content.items()):
+                condition_string += f"{table}.{attribute}='{value}'"
+                if index+1 != len(content): condition_string += " AND "
+
+            sql_query = f"UPDATE {table} SET {attribute_to_inc} = {attribute_to_inc} + 1 WHERE {condition_string}"
 
             self.cursor.execute(sql_query)
             self.connection.commit()
         except (Exception, Error) as error:
-            print(f"Error while updating record {id} in {table}", error)
             self.close_connection()
+            raise Error(f"Error while updating record in {table}", error)
 
+
+    def get_quarter_from_date(self, date: datetime) -> int:
+        return (date.month-1)//3 + 1
+
+    def get_weekend_flag_from_date(self, date: datetime) -> bool:
+        return True if date.weekday() < 5 else False
+
+    def get_day_of_week_from_date(self, date: datetime) -> str:
+        return date.strftime('%A')
+
+    def get_result_from_char(self, char: str) -> str:
+        if char=="H": return "Home"
+        elif char=="D": return "Draw"
+        elif char=="A": return "Away"
+        else: raise ValueError("Wrong input, you can input only values 'H', 'D' or 'A'")
+
+    def get_italian_venue_from_team(self, team: str) -> str:
+        venue = ITALIAN_VENUES.get(team, None)
+        if not venue: raise ValueError("You have inserted wrong team name")
+        return venue
+
+    def get_minute_from_string(self, minute: str) -> int:
+        split = minute.split('+')
+        if len(split)==1:
+            return int(split[0])
+        else:
+            return int(split[0]) + int(split[1])
+
+    def get_half_from_minute(self, minute: int) -> int:
+        return 1 if minute <= 47 else 2
+
+    def get_dict_key_for_increment(self, dict: dict, value: int) -> str:
+        return list(dict.keys())[list(dict.values()).index(str(value))]
 
 def test():
     try:
