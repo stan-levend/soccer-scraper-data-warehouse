@@ -1,5 +1,6 @@
 import time
 from db_manager import DatabaseManager
+from query_strings import italian_events, italian_subs, italian_lineups
 
 star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
 league_manager = DatabaseManager('postgres', 'postgres', 'tassu')
@@ -47,61 +48,32 @@ def insert_into_common_tables(name, position, birth_date, nationality, match_dat
 
 
 def fill_in_lineup_fact_table():
-    # lineup_records = league_manager.query('''
-    #     SELECT player.name, player.position, player.birth_date, player.nationality, club_home.name as away_team, club_away.name as home_team, club.name, match.date, match.season, match.result, team_player.substitute
-    #         FROM team_player
-    #             JOIN match
-    #                 ON team_player.match_id=match.id
-    #             JOIN player
-    #                 ON team_player.player_id=player.id
-    #             JOIN club as club_home
-    #                 ON match.home_team_id=club_home.id
-    #             JOIN club as club_away
-    #                 ON match.away_team_id=club_away.id
-    #             JOIN club
-    #                 ON team_player.club_id=club.id
-    # ''')
+    lineup_records = league_manager.query(italian_lineups)
 
-    # print(f"Processing {len(lineup_records)}.")
-    # for i, record in enumerate(lineup_records[:]):
+    print(f"Processing {len(lineup_records)}.")
+    for i, record in enumerate(lineup_records[:]):
 
-    #     player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
-    #         name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[7], season=record[8],
-    #         result=record[9], home_team=record[4], playing_team=record[6]
-    #     )
-    #     is_substitute = record[10]
+        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
+            name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[7], season=record[8],
+            result=record[9], home_team=record[4], playing_team=record[6]
+        )
+        is_substitute = record[10]
 
-    #     fact_table_fk_dict = {"player_id": str(player_id), "match_date_id": str(match_date_id), "match_id": str(match_id), "league_team_id": str(league_team_id)}
-    #     fact_table_facts_dict = {"time_played": str(0 if is_substitute else 90)}
-    #     fact_table_content = dict(fact_table_fk_dict, **fact_table_facts_dict)
+        fact_table_fk_dict = {"player_id": str(player_id), "match_date_id": str(match_date_id), "match_id": str(match_id), "league_team_id": str(league_team_id)}
+        fact_table_facts_dict = {"time_played": str(0 if is_substitute else 90)}
+        fact_table_content = dict(fact_table_fk_dict, **fact_table_facts_dict)
 
-    #     fetched_record = star_schema_manager.fact_event_table_record_exists("lineup_fact_table", fact_table_fk_dict)
-    #     if not fetched_record:
-    #         match_date_id = star_schema_manager.insert_into_table("lineup_fact_table", fact_table_content, id=None)
-    #     else:
-    #         print(f"{i} Duplicate player, not inserting.")
+        fetched_record = star_schema_manager.fact_event_table_record_exists("lineup_fact_table", fact_table_fk_dict)
+        if not fetched_record:
+            match_date_id = star_schema_manager.insert_into_table("lineup_fact_table", fact_table_content, id=None)
+        else:
+            print(f"{i} Duplicate player, not inserting.")
 
-    #     if i % 1000 == 0: print(f"{i} records done")
+        if i % 1000 == 0: print(f"{i} records done")
 
 
     # WE NEED TO FIND SUBSTITUTIONS AND SUBSTRACT/ADD TIME TO THE TIME PLAYED THAT WE HAVE OBTAINED ALREADY
-    substitution_records = league_manager.query('''
-        SELECT player.name, player.position, player.birth_date, player.nationality, club_home.name as away_team, club_away.name as home_team, club.name, match.date, match.season, match.result, team_player.substitute, event.type, event.minute
-            FROM team_player
-                JOIN match
-                    ON team_player.match_id=match.id
-                JOIN player
-                    ON team_player.player_id=player.id
-                JOIN club as club_home
-                    ON match.home_team_id=club_home.id
-                JOIN club as club_away
-                    ON match.away_team_id=club_away.id
-                JOIN club
-                    ON team_player.club_id=club.id
-                JOIN event
-                    ON event.team_player_id=team_player.id
-                        WHERE event.type = 'sub on' or event.type = 'sub off'
-    ''')
+    substitution_records = league_manager.query(italian_subs)
     print(f"Processing {len(substitution_records)} substitution_records.")
     for i, record in enumerate(substitution_records[:]):
         player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
@@ -134,23 +106,7 @@ def fill_in_lineup_fact_table():
 
 
 def fill_in_event_fact_table():
-    records = league_manager.query('''
-        SELECT player.name, player.position, player.birth_date, player.nationality, club_home.name as away_team, club_away.name as home_team, club.name, match.date, match.season, match.result, team_player.substitute, event.type, event.minute
-            FROM event
-                JOIN team_player
-                    ON event.team_player_id=team_player.id
-                JOIN match
-                    ON event.match_id=match.id
-                JOIN player
-                    ON team_player.player_id=player.id
-                JOIN club as club_home
-                    ON match.home_team_id=club_home.id
-                JOIN club as club_away
-                    ON match.away_team_id=club_away.id
-                JOIN club
-                    ON team_player.club_id=club.id
-                        WHERE event.type != 'corner' AND event.type != 'offside'
-    ''')
+    records = league_manager.query(italian_events)
 
     print(f"Processing {len(records)}.")
     for i, record in enumerate(records[:5]):

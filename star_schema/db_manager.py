@@ -135,6 +135,11 @@ class DatabaseManager():
         elif char=="A": return "Away"
         else: raise ValueError("Wrong input, you can input only values 'H', 'D' or 'A'")
 
+    def get_result_from_goals(self, home_goals: int, away_goals: int) -> str:
+        if home_goals > away_goals: return "Home"
+        elif home_goals < away_goals: return "Away"
+        elif home_goals == away_goals: return "Draw"
+
     def get_italian_venue_from_team(self, team: str) -> str:
         venue = ITALIAN_VENUES.get(team, None)
         if not venue: raise ValueError("You have inserted wrong team name")
