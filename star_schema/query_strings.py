@@ -17,7 +17,7 @@ italian_events='''
     '''
 
 italian_lineups='''
-    SELECT player.name, player.position, player.birth_date, player.nationality, club_home.name as away_team, club_away.name as home_team, club.name, match.date, match.season, match.result, team_player.substitute
+    SELECT player.name, player.position, player.birth_date, player.nationality, club_home.name as home_team, club_away.name as away_team, club.name, match.date, match.season, match.result, team_player.substitute
         FROM team_player
             JOIN match
                 ON team_player.match_id=match.id
