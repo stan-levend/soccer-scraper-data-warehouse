@@ -19,7 +19,7 @@ def insert_into_common_tables(name, position, birth_date, nationality, match_dat
         "name": name.replace("'", " "),
         "position": position,
         "birth_year": str(birth_date.year),
-        "birth_month": birth_date.strftime("%B"),
+        # "birth_month": birth_date.strftime("%B"),
         "nationality": nationality.replace("'", " ")
     })
 
@@ -89,15 +89,12 @@ def fill_in_lineup_fact_table():
 
         fetched_record = star_schema_manager.fact_event_table_record_exists("lineup_fact_table", fact_table_fk_dict)
         if fetched_record:
-            time_played = fetched_record[4]
             if event_time > 90:
                 if event_type == 'sub on': new_time = event_time - 90
                 elif event_type == 'sub off': new_time = 90
             else:
                 if event_type == 'sub on': new_time = 90 - event_time
                 elif event_type == 'sub off': new_time = event_time
-            # print(new_time)
-            # print(fact_table_fk_dict)
             star_schema_manager.update_record("lineup_fact_table", fact_table_fk_dict, "time_played", new_time)
         else:
             print("Record not found")

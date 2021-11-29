@@ -37,7 +37,7 @@ class DatabaseManager():
                 if index+1 != len(content): condition_string += " AND "
 
             sql_query = f"SELECT * FROM {table} WHERE {condition_string}"
-
+            # print(sql_query)
             self.cursor.execute(sql_query)
             record = self.cursor.fetchone()
             return record if record is not None else None
@@ -97,6 +97,26 @@ class DatabaseManager():
         except (Exception, Error) as error:
             self.close_connection()
             raise Error(f"Error while updating record in {table}", error)
+
+    def get_team_by_matchdate_and_name(self, matchdate, player_name):
+        try:
+            query_string = f'''
+                SELECT playingbench.home, team.teamname
+                    FROM playingbench
+                        JOIN match
+                            ON playingbench.matchid=match.id
+                        JOIN player
+                            ON playingbench.playerid=player.id
+                        JOIN team
+                            ON playingbench.teamid=team.id
+                        WHERE match.dateandtime = '{str(matchdate)}' and player.name = '{str(player_name)}'
+            '''
+            self.cursor.execute(query_string)
+            record = self.cursor.fetchone()
+            return record if record is not None else None
+        except (Exception, Error) as error:
+            self.close_connection()
+            raise Error(f"Error while fetching team_name and home/away team flag.", error)
 
 
     def query(self, query_string: str) -> tuple:

@@ -135,3 +135,66 @@ english_substitutions = '''
             ON away_club.id=matches.id_club_away
     '''
 
+spain_goals_assists='''
+    SELECT player.name, player.pos, player.bornyear, player.nation, match.dateandtime, match.team1_score, team2_score, venue.stadion_name, season.seasonyear, goals.minute, goals.own,
+    assist_player.name, assist_player.pos, assist_player.bornyear, assist_player.nation
+        FROM goals
+            JOIN match
+                ON goals.matchid=match.id
+            JOIN player
+                ON goals.playerid=player.id
+            JOIN player as assist_player
+                ON goals.assistid=assist_player.id
+            JOIN venue
+                ON match.venueid=venue.id
+            JOIN season
+                ON match.seasonid=season.id
+            WHERE season.seasonyear != '2017-2018'
+'''
+
+spain_cards='''
+SELECT player.name, player.pos, player.bornyear, player.nation, match.dateandtime, match.team1_score, team2_score, venue.stadion_name, season.seasonyear, cards.minute, cards.cardcolor
+        FROM cards
+            JOIN match
+                ON cards.matchid=match.id
+            JOIN player
+                ON cards.playerid=player.id
+            JOIN venue
+                ON match.venueid=venue.id
+            JOIN season
+                ON match.seasonid=season.id
+            WHERE season.seasonyear != '2017-2018'
+'''
+spain_substitution='''
+    SELECT player_in.name, player_in.pos, player_in.bornyear, player_in.nation, match.dateandtime, match.team1_score, team2_score, venue.stadion_name, season.seasonyear,
+    substitutions.minute, player_out.name, player_out.pos, player_out.bornyear, player_out.nation
+        FROM substitutions
+            JOIN match
+                ON substitutions.matchid=match.id
+            JOIN player as player_in
+                ON substitutions.substitutingid=player_in.id
+            JOIN player as player_out
+                ON substitutions.substitutedid=player_out.id
+            JOIN venue
+                ON match.venueid=venue.id
+            JOIN season
+                ON match.seasonid=season.id
+			WHERE season.seasonyear != '2017-2018'
+'''
+
+spain_lineups='''
+    SELECT player.name, player.pos, player.bornyear, player.nation, match.dateandtime, match.team1_score, team2_score, venue.stadion_name, season.seasonyear,  team.teamname, playingbench.home, playingbench.playing
+		FROM playingbench
+			JOIN match
+				ON playingbench.matchid=match.id
+			JOIN player
+				ON playingbench.playerid=player.id
+			JOIN team
+				ON playingbench.teamid=team.id
+            JOIN season
+                ON match.seasonid=season.id
+			JOIN venue
+                ON match.venueid=venue.id
+			WHERE season.seasonyear != '2017-2018'
+
+'''
