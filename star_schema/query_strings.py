@@ -198,3 +198,38 @@ spain_lineups='''
 			WHERE season.seasonyear != '2017-2018'
 
 '''
+
+dutch_event='''
+SELECT player.name, lineup.pos,  player.birth_date, player.nation, match.kickoff_date, match.season, match.league, club_home.name as home_team, club_away.name as away_team, team.name, match.venue, event.event_type, event.event_min, event.half, lineup.minutes
+        FROM event
+            JOIN match
+                ON event.match_id=match.match_id
+            JOIN team
+                ON event.team_id=team.team_id
+            JOIN player
+                ON event.player_id=player.player_id 
+            FULL JOIN lineup
+                ON player.player_id=lineup.player_id AND match.match_id=lineup.match_id 
+            JOIN team as club_home
+                ON match.h_team_id=club_home.team_id
+            JOIN team as club_away
+                ON match.a_team_id=club_away.team_id
+            WHERE match.season != '2018-2017' AND event.event_min IS NOT NULL AND event.half IS NOT NULL AND event.event_type = 'goal'  OR event.event_type = 'assist' OR event.event_type = 'yellow_card' OR event.event_type = 'red_card' OR event.event_type = 'substitution_in' OR event.event_type = 'substitution_out' OR event.event_type = 'own_goal'
+'''
+
+dutch_lineup='''
+SELECT player.name, lineup.pos, player.birth_date, player.nation, match.league, club_home.name as home_team, club_away.name as away_team, team.name, match.kickoff_date, match.season, match.venue, lineup.minutes
+        FROM lineup
+            JOIN match
+                ON lineup.match_id=match.match_id
+            JOIN team
+                ON lineup.team_id=team.team_id
+            JOIN player
+                ON lineup.player_id=player.player_id
+            JOIN team as club_home
+                ON match.h_team_id=club_home.team_id
+            JOIN team as club_away
+                ON match.a_team_id=club_away.team_id
+            WHERE match.season != '2018-2017'
+
+'''
