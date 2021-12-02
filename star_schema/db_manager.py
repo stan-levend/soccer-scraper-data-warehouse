@@ -119,6 +119,34 @@ class DatabaseManager():
             raise Error(f"Error while fetching team_name and home/away team flag.", error)
 
 
+    def get_player_info_by_player_id(self, player_id):
+        try:
+            query_string = f'''
+                    SELECT
+                        CONCAT(player.firstname, ' ', player.lastname) as name,
+                        lineup.player_position,
+                        player.birthday,
+                        country.name as nationality
+
+                    FROM bundesliga.lineup
+                        JOIN bundesliga.player
+                            ON player.id = lineup.player_id
+                        JOIN bundesliga.match
+                            ON match.id = lineup.match_id
+                        JOIN bundesliga.team
+                            ON team.id = lineup.team_id
+                        JOIN bundesliga.country
+                            ON team.country_id = country.id
+                    WHERE player.id='{str(player_id)}'
+            '''
+            self.cursor.execute(query_string)
+            record = self.cursor.fetchone()
+            return record if record is not None else None
+        except (Exception, Error) as error:
+            self.close_connection()
+            raise Error(f"Error while fetching team_name and home/away team flag.", error)
+
+
     def query(self, query_string: str) -> tuple:
         self.cursor.execute(query_string)
         return self.cursor.fetchall()

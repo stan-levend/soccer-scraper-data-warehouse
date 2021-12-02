@@ -19,7 +19,6 @@ def insert_into_common_tables(name, position, birth_date, nationality, match_dat
         "name": name.replace("'", " "),
         "position": position,
         "birth_year": str(birth_date.year),
-        # "birth_month": birth_date.strftime("%B"),
         "nationality": nationality.replace("'", " ")
     })
 

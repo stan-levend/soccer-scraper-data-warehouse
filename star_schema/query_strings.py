@@ -198,3 +198,128 @@ spain_lineups='''
 			WHERE season.seasonyear != '2017-2018'
 
 '''
+
+german_events = '''
+    SELECT DISTINCT
+	CONCAT(player.firstname, ' ', player.lastname) as name,
+	player_lineup.player_position,
+	player.birthday,
+	country.name as nationality,
+	club_home.name as home_team,
+	club_away.name as away_team,
+	team.name as team,
+	match.match_start,
+	season.name as season,
+	match.home_score,
+	match.away_score,
+	event_type.name as event_type,
+	event.minute,
+	event.own_goal,
+	venue.name as venue,
+    related_player.id
+
+    FROM bundesliga.event
+		JOIN bundesliga.player
+			ON event.player_id=player.id
+		Left JOIN bundesliga.player as related_player
+			ON related_player.id = event.related_player_id
+		JOIN bundesliga.lineup as player_lineup
+			ON player.id=player_lineup.player_id
+		JOIN bundesliga.country
+			ON player.country_id=country.id
+		JOIN bundesliga.team
+			ON player_lineup.team_id=team.id
+		JOIN bundesliga.match
+			ON event.match_id = match.id
+		JOIN bundesliga.season
+			ON match.season_id = season.id
+		JOIN bundesliga.team as club_home
+			ON match.home_team_id = club_home.id
+		JOIN bundesliga.team as club_away
+			ON match.away_team_id = club_away.id
+		JOIN bundesliga.event_type
+			ON event.event_type_id = event_type.id
+		JOIN bundesliga.venue
+			ON match.venue_id = venue.id
+
+	where event_type.name != 'injury' and event_type.name != 'back from injury'
+'''
+
+german_linups = '''
+    select
+        CONCAT(player.firstname, ' ', player.lastname) as name,
+        lineup.player_position,
+        player.birthday,
+        country.name as nationality,
+        club_home.name as home_team,
+        club_away.name as away_team,
+        team.name as team,
+        match.match_start,
+        season.name as season,
+        match.home_score,
+        match.away_score,
+        venue.name as venue
+
+    from bundesliga.lineup
+        join bundesliga.player
+            on player.id = lineup.player_id
+        join bundesliga.match
+            on match.id = lineup.match_id
+        join bundesliga.team
+            on team.id = lineup.team_id
+        join bundesliga.country
+            on team.country_id = country.id
+        JOIN bundesliga.team as club_home
+            ON match.home_team_id = club_home.id
+        JOIN bundesliga.team as club_away
+            ON match.away_team_id = club_away.id
+        JOIN bundesliga.venue
+            ON match.venue_id = venue.id
+        JOIN bundesliga.season
+            ON match.season_id = season.id
+'''
+
+german_subs = '''
+    SELECT DISTINCT
+        CONCAT(player.firstname, ' ', player.lastname) as name,
+        player_lineup.player_position,
+        player.birthday,
+        country.name as nationality,
+        club_home.name as home_team,
+        club_away.name as away_team,
+        team.name as team,
+        match.match_start,
+        season.name as season,
+        match.home_score,
+        match.away_score,
+        event_type.name as event_type,
+        event.minute,
+        venue.name as venue,
+        related_player.id
+
+    FROM bundesliga.event
+		JOIN bundesliga.player
+			ON event.player_id=player.id
+		Left JOIN bundesliga.player as related_player
+			ON related_player.id = event.related_player_id
+		JOIN bundesliga.lineup as player_lineup
+			ON player.id=player_lineup.player_id
+		JOIN bundesliga.country
+			ON player.country_id=country.id
+		JOIN bundesliga.team
+			ON player_lineup.team_id=team.id
+		JOIN bundesliga.match
+			ON event.match_id = match.id
+		JOIN bundesliga.season
+			ON match.season_id = season.id
+		JOIN bundesliga.team as club_home
+			ON match.home_team_id = club_home.id
+		JOIN bundesliga.team as club_away
+			ON match.away_team_id = club_away.id
+		JOIN bundesliga.event_type
+			ON event.event_type_id = event_type.id
+		JOIN bundesliga.venue
+			ON match.venue_id = venue.id
+
+	where event_type.name = 'substitution'
+'''
