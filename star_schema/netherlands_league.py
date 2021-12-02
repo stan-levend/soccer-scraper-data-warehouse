@@ -70,10 +70,11 @@ def fill_in_lineup_fact_table():
     print(f"Processing {len(lineup_records)}.")
     for i, record in enumerate(lineup_records[:]):
         result = get_result_by_code(record[8], record[5], record[6])
-        if(result!=None):
-            result = league_manager.get_result_from_char(result)
-        else:
+        if(result==None):
             i+=1
+            continue
+        else:
+            result = league_manager.get_result_from_char(result)
 
         player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
             name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[8], season=record[9],
@@ -101,10 +102,11 @@ def fill_in_event_fact_table():
     for i, record in enumerate(records[:5]):
         # print(record)
         result = get_result_by_code(record[4], record[7], record[8])
-        if(result!=None):
-            result = league_manager.get_result_from_char(result)
-        else:
+        if(result==None):
             i+=1
+            continue
+        else:
+            result = league_manager.get_result_from_char(result)
 
         player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
             name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[4], season=record[5],
@@ -150,6 +152,3 @@ def fill_in_event_fact_table():
 if __name__ == '__main__':
     main()
     pass
-
-
-
