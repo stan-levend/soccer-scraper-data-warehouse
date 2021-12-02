@@ -1,5 +1,6 @@
 import time
 import pandas as pd
+import numpy as np
 
 from db_manager import DatabaseManager
 from query import dutch_event, dutch_lineup
@@ -7,11 +8,11 @@ from query import dutch_event, dutch_lineup
 star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
 league_manager = DatabaseManager('postgres', 'postgres', 'tassu-holandska_liga')
 
-countries_df = pd.read_csv(f"matches.csv", usecols=['Date', 'FTR', 'HomeTeam', 'AwayTeam'])
+countries_df = pd.read_csv(f"matches.csv", usecols=['Date', 'HomeTeam', 'AwayTeam', 'FTR'])
 def get_result_by_code(code1, code2, code3):
-    try: return countries_df.loc[(countries_df['Date'] == code1) & (countries_df['HomeTeam'] == code2) & (countries_df['AwayTeam'] == code3), 'FTR']
-    except: raise ValueError(f'{code1} {code2} {code3} result problem')
-
+    try: result = countries_df.loc[(countries_df['Date'] == np.datetime64(code1.date())) & (countries_df['HomeTeam'] == code2) & (countries_df['AwayTeam'] == code3), 'FTR'].iloc[0]
+    except: result = None
+    return result
 
 def main():
     # index = manager.get_index_if_exists('match', {'date': '2018-08-18', 'home_goals': 2, 'away_goals': 3, 'season': 2018})
@@ -43,7 +44,7 @@ def insert_into_common_tables(name, position, birth_date, nationality, match_dat
 
     match_id = star_schema_manager.insert_into_table("match", {
         "venue": str(venue),
-        "result": str(result)[-1],
+        "result": str(result),
         "team": "Home" if home_team == playing_team else "Away"
     })
 
@@ -62,10 +63,11 @@ def fill_in_lineup_fact_table():
     print(f"Processing {len(lineup_records)}.")
     for i, record in enumerate(lineup_records[:]):
         result = get_result_by_code(record[8], record[5], record[6])
+        #result = league_manager.get_result_from_char(result)
 
         player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
             name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[8], season=record[9],
-            result=result, home_team=record[6], playing_team=record[7], venue=(record[10])
+            result=result, home_team=record[5], playing_team=record[7], venue=(record[10])
         )
         minutes=record[11]
 
@@ -88,7 +90,8 @@ def fill_in_event_fact_table():
     print(f"Processing {len(records)}.")
     for i, record in enumerate(records[:5]):
         # print(record)
-        result = get_result_by_code(record[8], record[5], record[6])
+        result = get_result_by_code(record[4], record[7], record[8])
+        #result = league_manager.get_result_from_char(result)
 
         player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
             name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[4], season=record[5],
@@ -134,4 +137,5 @@ def fill_in_event_fact_table():
 if __name__ == '__main__':
     main()
     pass
+
 
