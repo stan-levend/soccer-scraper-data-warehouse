@@ -43,7 +43,7 @@ def insert_into_common_tables(name, position, birth_date, nationality, match_dat
 
     match_id = star_schema_manager.insert_into_table("match", {
         "venue": str(venue),
-        "result": league_manager.get_result_from_char(result.any),
+        "result": str(result)[-1],
         "team": "Home" if home_team == playing_team else "Away"
     })
 
@@ -64,10 +64,10 @@ def fill_in_lineup_fact_table():
         result = get_result_by_code(record[8], record[5], record[6])
 
         player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
-            name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[8], season=record[10],
-            result=result, home_team=record[6], playing_team=record[7], venue=record[10]
+            name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[8], season=record[9],
+            result=result, home_team=record[6], playing_team=record[7], venue=(record[10])
         )
-        minutes=record[12]
+        minutes=record[11]
 
         fact_table_fk_dict = {"player_id": str(player_id), "match_date_id": str(match_date_id), "match_id": str(match_id), "league_team_id": str(league_team_id)}
         fact_table_facts_dict = {"time_played": str(minutes)}
@@ -134,3 +134,4 @@ def fill_in_event_fact_table():
 if __name__ == '__main__':
     main()
     pass
+
