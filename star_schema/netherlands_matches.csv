@@ -1,0 +1,845 @@
+Date,HomeTeam,AwayTeam,FTR
+2018-08-10,Zwolle,Heerenveen,A
+2018-08-11,Ajax,Heracles Almeno,D
+2018-08-11,Excelsior,Fortuna Sittard,D
+2018-08-11,PSV Eindhoven,Utrecht,H
+2018-08-11,Willem II,VVV-Venlo,A
+2018-08-12,AZ Alkmaar,NAC Breda,H
+2018-08-12,ADO Den Haag,Emmen,A
+2018-08-12,De Graafschap,Feyenoord,H
+2018-08-12,Vitesse,Groningen,H
+2018-08-17,Groningen,Willem II,A
+2018-08-18,Heracles Almeno,ADO Den Haag,H
+2018-08-18,NAC Breda,De Graafschap,H
+2018-08-18,Fortuna Sittard,PSV Eindhoven,A
+2018-08-18,VVV-Venlo,Ajax,A
+2018-08-19,Emmen,AZ Alkmaar,A
+2018-08-19,Feyenoord,Excelsior,H
+2018-08-19,Heerenveen,Vitesse,D
+2018-08-19,Utrecht,Zwolle,H
+2018-08-24,ADO Den Haag,Fortuna Sittard,H
+2018-08-25,Ajax,Emmen,H
+2018-08-25,De Graafschap,Groningen,A
+2018-08-25,NAC Breda,Excelsior,A
+2018-08-25,Zwolle,PSV Eindhoven,A
+2018-08-26,AZ Alkmaar,Vitesse,D
+2018-08-26,Heerenveen,Feyenoord,A
+2018-08-26,Utrecht,VVV-Venlo,D
+2018-08-26,Willem II,Heracles Almeno,H
+2018-08-31,Emmen,De Graafschap,D
+2018-09-01,Excelsior,ADO Den Haag,A
+2018-09-01,Fortuna Sittard,Utrecht,D
+2018-09-01,PSV Eindhoven,Willem II,H
+2018-09-01,VVV-Venlo,Heerenveen,D
+2018-09-02,Feyenoord,NAC Breda,H
+2018-09-02,Groningen,Zwolle,A
+2018-09-02,Heracles Almeno,AZ Alkmaar,H
+2018-09-02,Vitesse,Ajax,A
+2018-09-15,Ajax,Groningen,H
+2018-09-15,ADO Den Haag,PSV Eindhoven,A
+2018-09-15,De Graafschap,VVV-Venlo,A
+2018-09-15,Willem II,Excelsior,D
+2018-09-16,AZ Alkmaar,Feyenoord,D
+2018-09-16,Heerenveen,Heracles Almeno,A
+2018-09-16,NAC Breda,Fortuna Sittard,A
+2018-09-16,Utrecht,Emmen,A
+2018-09-16,Zwolle,Vitesse,A
+2018-09-21,Heracles Almeno,De Graafschap,H
+2018-09-22,Excelsior,Heerenveen,D
+2018-09-22,Fortuna Sittard,Willem II,D
+2018-09-22,Vitesse,ADO Den Haag,D
+2018-09-22,VVV-Venlo,NAC Breda,H
+2018-09-23,Emmen,Zwolle,A
+2018-09-23,Feyenoord,Utrecht,H
+2018-09-23,Groningen,AZ Alkmaar,A
+2018-09-23,PSV Eindhoven,Ajax,H
+2018-09-29,Excelsior,VVV-Venlo,H
+2018-09-29,Fortuna Sittard,Ajax,A
+2018-09-29,Heerenveen,ADO Den Haag,D
+2018-09-29,NAC Breda,PSV Eindhoven,A
+2018-09-30,AZ Alkmaar,Zwolle,D
+2018-09-30,Feyenoord,Vitesse,H
+2018-09-30,De Graafschap,Willem II,H
+2018-09-30,Groningen,Utrecht,D
+2018-09-30,Heracles Almeno,Emmen,H
+2018-10-05,Utrecht,NAC Breda,H
+2018-10-06,ADO Den Haag,Groningen,H
+2018-10-06,De Graafschap,Heerenveen,A
+2018-10-06,PSV Eindhoven,VVV-Venlo,H
+2018-10-06,Zwolle,Excelsior,H
+2018-10-07,Ajax,AZ Alkmaar,H
+2018-10-07,Emmen,Fortuna Sittard,D
+2018-10-07,Vitesse,Heracles Almeno,H
+2018-10-07,Willem II,Feyenoord,D
+2018-10-20,Excelsior,Vitesse,H
+2018-10-20,Heerenveen,Ajax,A
+2018-10-20,PSV Eindhoven,Emmen,H
+2018-10-20,Utrecht,AZ Alkmaar,H
+2018-10-21,Feyenoord,Zwolle,H
+2018-10-21,Fortuna Sittard,De Graafschap,H
+2018-10-21,Heracles Almeno,Groningen,H
+2018-10-21,NAC Breda,Willem II,D
+2018-10-21,VVV-Venlo,ADO Den Haag,H
+2018-10-26,Emmen,VVV-Venlo,D
+2018-10-27,ADO Den Haag,NAC Breda,D
+2018-10-27,De Graafschap,Excelsior,H
+2018-10-27,Groningen,PSV Eindhoven,A
+2018-10-27,Zwolle,Heracles Almeno,D
+2018-10-28,Ajax,Feyenoord,H
+2018-10-28,AZ Alkmaar,Heerenveen,A
+2018-10-28,Vitesse,Fortuna Sittard,H
+2018-10-28,Willem II,Utrecht,A
+2018-11-02,Excelsior,Groningen,A
+2018-11-03,Ajax,Willem II,H
+2018-11-03,AZ Alkmaar,De Graafschap,H
+2018-11-03,NAC Breda,Heracles Almeno,H
+2018-11-03,PSV Eindhoven,Vitesse,H
+2018-11-04,Fortuna Sittard,Zwolle,H
+2018-11-04,Heerenveen,Emmen,D
+2018-11-04,Utrecht,ADO Den Haag,H
+2018-11-09,Zwolle,Willem II,A
+2018-11-10,Emmen,NAC Breda,H
+2018-11-10,De Graafschap,PSV Eindhoven,A
+2018-11-10,Vitesse,Utrecht,H
+2018-11-10,VVV-Venlo,Fortuna Sittard,H
+2018-11-11,ADO Den Haag,AZ Alkmaar,A
+2018-11-11,Excelsior,Ajax,A
+2018-11-11,Groningen,Heerenveen,H
+2018-11-11,Heracles Almeno,Feyenoord,A
+2018-11-24,Fortuna Sittard,Heracles Almeno,H
+2018-11-24,NAC Breda,Ajax,A
+2018-11-24,PSV Eindhoven,Heerenveen,H
+2018-11-24,Zwolle,ADO Den Haag,A
+2018-11-25,Emmen,Excelsior,A
+2018-11-25,Feyenoord,Groningen,H
+2018-11-25,Utrecht,De Graafschap,H
+2018-11-25,VVV-Venlo,AZ Alkmaar,D
+2018-11-25,Willem II,Vitesse,A
+2018-11-30,Excelsior,Utrecht,D
+2018-12-01,AZ Alkmaar,Willem II,A
+2018-12-01,De Graafschap,Zwolle,A
+2018-12-01,Heerenveen,Fortuna Sittard,H
+2018-12-01,Vitesse,Emmen,D
+2018-12-02,Ajax,ADO Den Haag,H
+2018-12-02,Feyenoord,PSV Eindhoven,H
+2018-12-02,Groningen,NAC Breda,H
+2018-12-02,Heracles Almeno,VVV-Venlo,H
+2018-12-06,Feyenoord,VVV-Venlo,H
+2018-12-07,Fortuna Sittard,AZ Alkmaar,A
+2018-12-07,PSV Eindhoven,Excelsior,H
+2018-12-08,ADO Den Haag,De Graafschap,D
+2018-12-08,Willem II,Heerenveen,A
+2018-12-08,Zwolle,Ajax,A
+2018-12-09,Emmen,Feyenoord,A
+2018-12-09,NAC Breda,Vitesse,H
+2018-12-09,Utrecht,Heracles Almeno,H
+2018-12-09,VVV-Venlo,Groningen,D
+2018-12-14,Willem II,ADO Den Haag,A
+2018-12-15,AZ Alkmaar,Excelsior,H
+2018-12-15,Heracles Almeno,PSV Eindhoven,A
+2018-12-15,Vitesse,VVV-Venlo,H
+2018-12-15,Zwolle,NAC Breda,D
+2018-12-16,Ajax,De Graafschap,H
+2018-12-16,Feyenoord,Fortuna Sittard,A
+2018-12-16,Groningen,Emmen,A
+2018-12-16,Heerenveen,Utrecht,A
+2018-12-21,VVV-Venlo,Zwolle,H
+2018-12-22,Excelsior,Heracles Almeno,A
+2018-12-22,Fortuna Sittard,Groningen,D
+2018-12-22,NAC Breda,Heerenveen,H
+2018-12-22,PSV Eindhoven,AZ Alkmaar,H
+2018-12-23,ADO Den Haag,Feyenoord,D
+2018-12-23,Emmen,Willem II,A
+2018-12-23,De Graafschap,Vitesse,D
+2018-12-23,Utrecht,Ajax,A
+2019-01-18,Vitesse,Excelsior,H
+2019-01-19,AZ Alkmaar,Utrecht,H
+2019-01-19,ADO Den Haag,VVV-Venlo,A
+2019-01-19,Groningen,Heracles Almeno,H
+2019-01-19,Zwolle,Feyenoord,H
+2019-01-20,Ajax,Heerenveen,D
+2019-01-20,Emmen,PSV Eindhoven,D
+2019-01-20,De Graafschap,Fortuna Sittard,H
+2019-01-20,Willem II,NAC Breda,H
+2019-01-25,NAC Breda,ADO Den Haag,D
+2019-01-26,Excelsior,De Graafschap,H
+2019-01-26,Heracles Almeno,Zwolle,A
+2019-01-26,PSV Eindhoven,Groningen,H
+2019-01-26,VVV-Venlo,Emmen,A
+2019-01-27,Feyenoord,Ajax,H
+2019-01-27,Fortuna Sittard,Vitesse,H
+2019-01-27,Heerenveen,AZ Alkmaar,A
+2019-01-27,Utrecht,Willem II,A
+2019-02-01,De Graafschap,NAC Breda,H
+2019-02-02,Ajax,VVV-Venlo,H
+2019-02-02,AZ Alkmaar,Emmen,H
+2019-02-02,Vitesse,Heerenveen,D
+2019-02-02,Willem II,Groningen,A
+2019-02-03,ADO Den Haag,Heracles Almeno,H
+2019-02-03,Excelsior,Feyenoord,H
+2019-02-03,PSV Eindhoven,Fortuna Sittard,H
+2019-02-03,Zwolle,Utrecht,H
+2019-02-08,NAC Breda,AZ Alkmaar,A
+2019-02-09,Feyenoord,De Graafschap,H
+2019-02-09,Heerenveen,Zwolle,D
+2019-02-09,Heracles Almeno,Ajax,H
+2019-02-09,VVV-Venlo,Willem II,H
+2019-02-10,Emmen,ADO Den Haag,H
+2019-02-10,Fortuna Sittard,Excelsior,H
+2019-02-10,Groningen,Vitesse,H
+2019-02-10,Utrecht,PSV Eindhoven,D
+2019-02-15,ADO Den Haag,Zwolle,H
+2019-02-16,AZ Alkmaar,VVV-Venlo,H
+2019-02-16,Heerenveen,PSV Eindhoven,D
+2019-02-16,Heracles Almeno,Fortuna Sittard,H
+2019-02-16,Vitesse,Willem II,H
+2019-02-17,Ajax,NAC Breda,H
+2019-02-17,Excelsior,Emmen,H
+2019-02-17,De Graafschap,Utrecht,A
+2019-02-17,Groningen,Feyenoord,H
+2019-02-22,VVV-Venlo,Heracles Almeno,A
+2019-02-23,Fortuna Sittard,Heerenveen,A
+2019-02-23,NAC Breda,Groningen,D
+2019-02-23,Utrecht,Excelsior,D
+2019-02-23,Zwolle,De Graafschap,A
+2019-02-24,ADO Den Haag,Ajax,A
+2019-02-24,Emmen,Vitesse,A
+2019-02-24,PSV Eindhoven,Feyenoord,D
+2019-02-24,Willem II,AZ Alkmaar,H
+2019-03-01,De Graafschap,ADO Den Haag,D
+2019-03-02,Excelsior,PSV Eindhoven,A
+2019-03-02,Heracles Almeno,Utrecht,A
+2019-03-02,Vitesse,NAC Breda,H
+2019-03-03,AZ Alkmaar,Fortuna Sittard,H
+2019-03-03,Feyenoord,Emmen,H
+2019-03-03,Groningen,VVV-Venlo,H
+2019-03-03,Heerenveen,Willem II,H
+2019-03-08,Utrecht,Groningen,D
+2019-03-09,ADO Den Haag,Heerenveen,A
+2019-03-09,PSV Eindhoven,NAC Breda,H
+2019-03-09,VVV-Venlo,Excelsior,H
+2019-03-09,Willem II,De Graafschap,H
+2019-03-10,Ajax,Fortuna Sittard,H
+2019-03-10,Emmen,Heracles Almeno,D
+2019-03-10,Vitesse,Feyenoord,D
+2019-03-10,Zwolle,AZ Alkmaar,D
+2019-03-13,Ajax,Zwolle,H
+2019-03-15,Fortuna Sittard,Emmen,H
+2019-03-16,Feyenoord,Willem II,A
+2019-03-16,Heerenveen,De Graafschap,A
+2019-03-16,Heracles Almeno,Vitesse,H
+2019-03-16,NAC Breda,Utrecht,A
+2019-03-17,AZ Alkmaar,Ajax,H
+2019-03-17,Excelsior,Zwolle,A
+2019-03-17,Groningen,ADO Den Haag,H
+2019-03-17,VVV-Venlo,PSV Eindhoven,A
+2019-03-30,AZ Alkmaar,Groningen,H
+2019-03-30,ADO Den Haag,Vitesse,D
+2019-03-30,De Graafschap,Heracles Almeno,A
+2019-03-30,Heerenveen,Excelsior,H
+2019-03-30,Willem II,Fortuna Sittard,H
+2019-03-31,Ajax,PSV Eindhoven,H
+2019-03-31,NAC Breda,VVV-Venlo,D
+2019-03-31,Utrecht,Feyenoord,H
+2019-03-31,Zwolle,Emmen,H
+2019-04-02,Groningen,De Graafschap,H
+2019-04-02,Heracles Almeno,Willem II,A
+2019-04-02,Vitesse,AZ Alkmaar,D
+2019-04-03,Excelsior,NAC Breda,A
+2019-04-03,Emmen,Ajax,A
+2019-04-03,Fortuna Sittard,ADO Den Haag,D
+2019-04-03,VVV-Venlo,Utrecht,A
+2019-04-04,Feyenoord,Heerenveen,H
+2019-04-04,PSV Eindhoven,Zwolle,H
+2019-04-06,ADO Den Haag,Utrecht,H
+2019-04-06,De Graafschap,AZ Alkmaar,D
+2019-04-06,Groningen,Excelsior,H
+2019-04-06,Heracles Almeno,NAC Breda,H
+2019-04-06,Willem II,Ajax,A
+2019-04-07,Emmen,Heerenveen,H
+2019-04-07,Vitesse,PSV Eindhoven,D
+2019-04-07,VVV-Venlo,Feyenoord,A
+2019-04-07,Zwolle,Fortuna Sittard,H
+2019-04-12,NAC Breda,Emmen,D
+2019-04-13,Ajax,Excelsior,H
+2019-04-13,AZ Alkmaar,ADO Den Haag,A
+2019-04-13,Feyenoord,Heracles Almeno,H
+2019-04-13,Fortuna Sittard,VVV-Venlo,D
+2019-04-14,Heerenveen,Groningen,D
+2019-04-14,PSV Eindhoven,De Graafschap,H
+2019-04-14,Utrecht,Vitesse,D
+2019-04-14,Willem II,Zwolle,H
+2019-04-19,Heracles Almeno,Heerenveen,H
+2019-04-20,Emmen,Utrecht,H
+2019-04-20,Feyenoord,AZ Alkmaar,H
+2019-04-20,Groningen,Ajax,A
+2019-04-20,Vitesse,Zwolle,H
+2019-04-20,VVV-Venlo,De Graafschap,H
+2019-04-21,Excelsior,Willem II,D
+2019-04-21,Fortuna Sittard,NAC Breda,H
+2019-04-21,PSV Eindhoven,ADO Den Haag,H
+2019-04-23,Ajax,Vitesse,H
+2019-04-23,AZ Alkmaar,Heracles Almeno,H
+2019-04-23,De Graafschap,Emmen,H
+2019-04-23,Heerenveen,VVV-Venlo,D
+2019-04-24,NAC Breda,Feyenoord,A
+2019-04-24,Utrecht,Fortuna Sittard,H
+2019-04-25,ADO Den Haag,Excelsior,H
+2019-04-25,Willem II,PSV Eindhoven,A
+2019-04-29,Zwolle,Groningen,H
+2019-05-12,Ajax,Utrecht,H
+2019-05-12,AZ Alkmaar,PSV Eindhoven,H
+2019-05-12,Feyenoord,ADO Den Haag,A
+2019-05-12,Groningen,Fortuna Sittard,H
+2019-05-12,Heerenveen,NAC Breda,H
+2019-05-12,Heracles Almeno,Excelsior,A
+2019-05-12,Vitesse,De Graafschap,H
+2019-05-12,Willem II,Emmen,A
+2019-05-12,Zwolle,VVV-Venlo,A
+2019-05-15,ADO Den Haag,Willem II,H
+2019-05-15,Excelsior,AZ Alkmaar,H
+2019-05-15,Emmen,Groningen,H
+2019-05-15,Fortuna Sittard,Feyenoord,A
+2019-05-15,De Graafschap,Ajax,A
+2019-05-15,NAC Breda,Zwolle,D
+2019-05-15,PSV Eindhoven,Heracles Almeno,H
+2019-05-15,Utrecht,Heerenveen,H
+2019-05-15,VVV-Venlo,Vitesse,A
+2019-08-02,Zwolle,Willem II,A
+2019-08-03,Emmen,Groningen,A
+2019-08-03,Vitesse,Ajax,D
+2019-08-03,Twente,PSV Eindhoven,D
+2019-08-03,VVV-Venlo,Waalwijk,H
+2019-08-04,Heracles Almeno,Heerenveen,A
+2019-08-04,Feyenoord,Sparta Rotterdam,D
+2019-08-04,ADO Den Haag,Utrecht,A
+2019-08-04,AZ Alkmaar,Fortuna Sittard,H
+2019-08-09,Sparta Rotterdam,VVV-Venlo,H
+2019-08-10,Groningen,Twente,A
+2019-08-10,Ajax,Emmen,H
+2019-08-10,Willem II,Vitesse,A
+2019-08-11,Fortuna Sittard,Heracles Almeno,D
+2019-08-11,Heerenveen,Feyenoord,D
+2019-08-11,Waalwijk,AZ Alkmaar,A
+2019-08-11,Utrecht,Zwolle,H
+2019-08-11,PSV Eindhoven,ADO Den Haag,H
+2019-08-16,Vitesse,Zwolle,H
+2019-08-17,ADO Den Haag,Sparta Rotterdam,A
+2019-08-17,VVV-Venlo,Ajax,A
+2019-08-17,Emmen,Heerenveen,H
+2019-08-18,Fortuna Sittard,Willem II,A
+2019-08-18,Twente,Waalwijk,D
+2019-08-18,AZ Alkmaar,Groningen,D
+2019-08-18,Feyenoord,Utrecht,D
+2019-08-18,Heracles Almeno,PSV Eindhoven,A
+2019-08-24,Willem II,Emmen,H
+2019-08-24,Heracles Almeno,Vitesse,D
+2019-08-24,Heerenveen,Twente,D
+2019-08-25,Waalwijk,ADO Den Haag,A
+2019-08-25,Utrecht,VVV-Venlo,A
+2019-08-25,Zwolle,Sparta Rotterdam,D
+2019-08-30,Emmen,Zwolle,A
+2019-08-31,Heerenveen,Fortuna Sittard,D
+2019-08-31,Groningen,Heracles Almeno,A
+2019-08-31,ADO Den Haag,VVV-Venlo,H
+2019-09-01,Twente,Utrecht,H
+2019-09-01,Sparta Rotterdam,Ajax,A
+2019-09-01,Vitesse,AZ Alkmaar,H
+2019-09-01,Willem II,Feyenoord,A
+2019-09-01,Waalwijk,PSV Eindhoven,A
+2019-09-14,Ajax,Heerenveen,H
+2019-09-14,AZ Alkmaar,Sparta Rotterdam,H
+2019-09-14,VVV-Venlo,Groningen,H
+2019-09-14,PSV Eindhoven,Vitesse,H
+2019-09-14,Utrecht,Emmen,H
+2019-09-15,Zwolle,Waalwijk,H
+2019-09-15,Feyenoord,ADO Den Haag,H
+2019-09-15,Heracles Almeno,Willem II,H
+2019-09-15,Fortuna Sittard,Twente,A
+2019-09-20,Twente,Heracles Almeno,A
+2019-09-21,Sparta Rotterdam,Waalwijk,H
+2019-09-21,Groningen,Zwolle,H
+2019-09-21,Willem II,VVV-Venlo,H
+2019-09-21,Vitesse,Fortuna Sittard,H
+2019-09-22,Heerenveen,Utrecht,D
+2019-09-22,Emmen,Feyenoord,D
+2019-09-22,ADO Den Haag,AZ Alkmaar,A
+2019-09-22,PSV Eindhoven,Ajax,D
+2019-09-25,PSV Eindhoven,Groningen,H
+2019-09-25,Ajax,Fortuna Sittard,H
+2019-09-26,Feyenoord,AZ Alkmaar,A
+2019-09-27,Emmen,ADO Den Haag,H
+2019-09-28,VVV-Venlo,Heerenveen,A
+2019-09-28,Ajax,Groningen,H
+2019-09-28,Fortuna Sittard,Sparta Rotterdam,D
+2019-09-29,Waalwijk,Vitesse,A
+2019-09-29,Utrecht,Willem II,H
+2019-09-29,Zwolle,PSV Eindhoven,A
+2019-09-29,AZ Alkmaar,Heracles Almeno,H
+2019-09-29,Feyenoord,Twente,H
+2019-10-04,Groningen,Waalwijk,H
+2019-10-05,Heracles Almeno,Emmen,H
+2019-10-05,Sparta Rotterdam,Twente,H
+2019-10-05,Vitesse,Utrecht,H
+2019-10-05,Heerenveen,Zwolle,H
+2019-10-06,ADO Den Haag,Ajax,A
+2019-10-06,Fortuna Sittard,Feyenoord,H
+2019-10-06,PSV Eindhoven,VVV-Venlo,H
+2019-10-06,Willem II,AZ Alkmaar,D
+2019-10-19,AZ Alkmaar,Heerenveen,A
+2019-10-19,Waalwijk,Ajax,A
+2019-10-19,Twente,Willem II,A
+2019-10-19,Utrecht,PSV Eindhoven,H
+2019-10-19,VVV-Venlo,Vitesse,A
+2019-10-20,Zwolle,ADO Den Haag,H
+2019-10-20,Emmen,Fortuna Sittard,H
+2019-10-20,Groningen,Sparta Rotterdam,H
+2019-10-20,Feyenoord,Heracles Almeno,D
+2019-10-25,Twente,Emmen,H
+2019-10-26,Willem II,Waalwijk,H
+2019-10-26,Fortuna Sittard,VVV-Venlo,H
+2019-10-26,Vitesse,ADO Den Haag,A
+2019-10-26,Heracles Almeno,Zwolle,H
+2019-10-27,Heerenveen,Groningen,D
+2019-10-27,PSV Eindhoven,AZ Alkmaar,A
+2019-10-27,Sparta Rotterdam,Utrecht,A
+2019-10-27,Ajax,Feyenoord,H
+2019-11-01,Zwolle,Ajax,A
+2019-11-02,Waalwijk,Heracles Almeno,H
+2019-11-02,Sparta Rotterdam,PSV Eindhoven,D
+2019-11-02,AZ Alkmaar,Twente,H
+2019-11-03,Emmen,Vitesse,H
+2019-11-03,Groningen,Willem II,H
+2019-11-03,Utrecht,Fortuna Sittard,H
+2019-11-03,VVV-Venlo,Feyenoord,A
+2019-11-03,ADO Den Haag,Heerenveen,D
+2019-11-08,Vitesse,Groningen,A
+2019-11-09,Heerenveen,Sparta Rotterdam,H
+2019-11-09,Fortuna Sittard,ADO Den Haag,H
+2019-11-09,Heracles Almeno,VVV-Venlo,H
+2019-11-10,Ajax,Utrecht,H
+2019-11-10,Twente,Zwolle,H
+2019-11-10,Willem II,PSV Eindhoven,H
+2019-11-10,Feyenoord,Waalwijk,H
+2019-11-10,AZ Alkmaar,Emmen,H
+2019-11-23,Utrecht,AZ Alkmaar,A
+2019-11-23,Ajax,Heracles Almeno,H
+2019-11-23,Zwolle,Fortuna Sittard,H
+2019-11-23,ADO Den Haag,Willem II,D
+2019-11-24,Groningen,Feyenoord,D
+2019-11-24,PSV Eindhoven,Heerenveen,H
+2019-11-24,Waalwijk,Emmen,D
+2019-11-24,Sparta Rotterdam,Vitesse,H
+2019-11-24,VVV-Venlo,Twente,H
+2019-11-29,Heerenveen,Vitesse,H
+2019-11-30,Willem II,Sparta Rotterdam,H
+2019-11-30,Fortuna Sittard,Groningen,H
+2019-11-30,Heracles Almeno,ADO Den Haag,H
+2019-12-01,Twente,Ajax,A
+2019-12-01,Utrecht,Waalwijk,A
+2019-12-01,AZ Alkmaar,VVV-Venlo,H
+2019-12-01,Feyenoord,Zwolle,H
+2019-12-01,Emmen,PSV Eindhoven,D
+2019-12-06,Ajax,Willem II,A
+2019-12-07,ADO Den Haag,Twente,D
+2019-12-07,PSV Eindhoven,Fortuna Sittard,H
+2019-12-07,VVV-Venlo,Emmen,H
+2019-12-07,Zwolle,AZ Alkmaar,A
+2019-12-08,Vitesse,Feyenoord,D
+2019-12-08,Groningen,Utrecht,A
+2019-12-08,Waalwijk,Heerenveen,A
+2019-12-08,Sparta Rotterdam,Heracles Almeno,D
+2019-12-13,Heerenveen,Willem II,A
+2019-12-14,ADO Den Haag,Groningen,D
+2019-12-14,Fortuna Sittard,Waalwijk,H
+2019-12-14,VVV-Venlo,Zwolle,A
+2019-12-14,Twente,Vitesse,A
+2019-12-15,Emmen,Sparta Rotterdam,H
+2019-12-15,Feyenoord,PSV Eindhoven,H
+2019-12-15,AZ Alkmaar,Ajax,H
+2019-12-15,Heracles Almeno,Utrecht,A
+2019-12-20,Waalwijk,Twente,H
+2019-12-21,Heerenveen,Heracles Almeno,D
+2019-12-21,PSV Eindhoven,Zwolle,H
+2019-12-21,Sparta Rotterdam,AZ Alkmaar,H
+2019-12-21,Willem II,Fortuna Sittard,D
+2019-12-22,Ajax,ADO Den Haag,H
+2019-12-22,Groningen,Emmen,H
+2019-12-22,Utrecht,Feyenoord,A
+2019-12-22,Vitesse,VVV-Venlo,H
+2020-01-17,Zwolle,Utrecht,D
+2020-01-18,Fortuna Sittard,Vitesse,A
+2020-01-18,Feyenoord,Heerenveen,H
+2020-01-18,Twente,Groningen,D
+2020-01-18,AZ Alkmaar,Willem II,A
+2020-01-19,VVV-Venlo,PSV Eindhoven,D
+2020-01-19,Ajax,Sparta Rotterdam,H
+2020-01-19,Emmen,Heracles Almeno,H
+2020-01-19,ADO Den Haag,Waalwijk,H
+2020-01-24,Utrecht,ADO Den Haag,H
+2020-01-25,Heerenveen,AZ Alkmaar,A
+2020-01-25,Heracles Almeno,Feyenoord,A
+2020-01-25,Waalwijk,VVV-Venlo,A
+2020-01-25,Sparta Rotterdam,Fortuna Sittard,D
+2020-01-26,Vitesse,Emmen,D
+2020-01-26,Groningen,Ajax,H
+2020-01-26,Willem II,Zwolle,D
+2020-01-26,PSV Eindhoven,Twente,D
+2020-01-31,AZ Alkmaar,Waalwijk,H
+2020-02-01,ADO Den Haag,Vitesse,D
+2020-02-01,Feyenoord,Emmen,H
+2020-02-01,Twente,Sparta Rotterdam,H
+2020-02-01,Zwolle,Groningen,H
+2020-02-02,Willem II,Heracles Almeno,H
+2020-02-02,Fortuna Sittard,Heerenveen,H
+2020-02-02,VVV-Venlo,Utrecht,D
+2020-02-02,Ajax,PSV Eindhoven,H
+2020-02-07,Heracles Almeno,Fortuna Sittard,H
+2020-02-08,Groningen,Vitesse,H
+2020-02-08,Heerenveen,VVV-Venlo,D
+2020-02-08,PSV Eindhoven,Willem II,H
+2020-02-08,Waalwijk,Zwolle,D
+2020-02-11,Emmen,Twente,H
+2020-02-11,Sparta Rotterdam,ADO Den Haag,H
+2020-02-14,VVV-Venlo,Heracles Almeno,H
+2020-02-15,Twente,AZ Alkmaar,H
+2020-02-15,ADO Den Haag,PSV Eindhoven,A
+2020-02-15,Fortuna Sittard,Emmen,D
+2020-02-16,Vitesse,Heerenveen,H
+2020-02-16,Ajax,Waalwijk,H
+2020-02-16,Sparta Rotterdam,Groningen,A
+2020-02-16,Willem II,Utrecht,D
+2020-02-16,Zwolle,Feyenoord,A
+2020-02-21,Waalwijk,Sparta Rotterdam,A
+2020-02-22,Emmen,Willem II,H
+2020-02-22,Feyenoord,Fortuna Sittard,H
+2020-02-22,Heerenveen,ADO Den Haag,D
+2020-02-22,Groningen,VVV-Venlo,A
+2020-02-23,Utrecht,Twente,H
+2020-02-23,AZ Alkmaar,Zwolle,H
+2020-02-23,Vitesse,PSV Eindhoven,A
+2020-02-23,Heracles Almeno,Ajax,H
+2020-02-28,Willem II,Groningen,H
+2020-02-29,ADO Den Haag,Heracles Almeno,D
+2020-02-29,VVV-Venlo,Fortuna Sittard,D
+2020-02-29,Zwolle,Vitesse,H
+2020-02-29,Twente,Heerenveen,A
+2020-03-01,Waalwijk,Utrecht,H
+2020-03-01,PSV Eindhoven,Feyenoord,D
+2020-03-01,Sparta Rotterdam,Emmen,H
+2020-03-01,Ajax,AZ Alkmaar,A
+2020-03-06,Fortuna Sittard,Zwolle,D
+2020-03-07,AZ Alkmaar,ADO Den Haag,H
+2020-03-07,Emmen,VVV-Venlo,H
+2020-03-07,Vitesse,Twente,H
+2020-03-07,Heerenveen,Ajax,A
+2020-03-08,Utrecht,Sparta Rotterdam,H
+2020-03-08,Feyenoord,Willem II,H
+2020-03-08,Heracles Almeno,Waalwijk,H
+2020-03-08,Groningen,PSV Eindhoven,A
+2020-09-12,Heerenveen,Willem II,H
+2020-09-12,Zwolle,Feyenoord,A
+2020-09-12,Twente,Fortuna Sittard,H
+2020-09-13,Emmen,VVV-Venlo,A
+2020-09-13,Heracles Almeno,ADO Den Haag,H
+2020-09-13,Sparta Rotterdam,Ajax,A
+2020-09-13,Groningen,PSV Eindhoven,A
+2020-09-13,Waalwijk,Vitesse,A
+2020-09-18,VVV-Venlo,Utrecht,D
+2020-09-19,AZ Alkmaar,Zwolle,D
+2020-09-19,Vitesse,Sparta Rotterdam,H
+2020-09-19,PSV Eindhoven,Emmen,H
+2020-09-19,Fortuna Sittard,Heerenveen,A
+2020-09-20,ADO Den Haag,Groningen,A
+2020-09-20,Feyenoord,Twente,D
+2020-09-20,Willem II,Heracles Almeno,H
+2020-09-20,Ajax,Waalwijk,H
+2020-09-25,Twente,Groningen,H
+2020-09-26,Zwolle,Sparta Rotterdam,H
+2020-09-26,Fortuna Sittard,AZ Alkmaar,D
+2020-09-26,Heerenveen,VVV-Venlo,H
+2020-09-26,Ajax,Vitesse,H
+2020-09-27,Feyenoord,ADO Den Haag,H
+2020-09-27,Utrecht,Waalwijk,H
+2020-09-27,Emmen,Willem II,D
+2020-09-27,Heracles Almeno,PSV Eindhoven,D
+2020-10-02,Utrecht,Heerenveen,D
+2020-10-03,Vitesse,Heracles Almeno,H
+2020-10-03,VVV-Venlo,ADO Den Haag,A
+2020-10-03,Twente,Emmen,D
+2020-10-04,Groningen,Ajax,H
+2020-10-04,Sparta Rotterdam,AZ Alkmaar,D
+2020-10-04,Willem II,Feyenoord,A
+2020-10-04,PSV Eindhoven,Fortuna Sittard,H
+2020-10-17,Heracles Almeno,Waalwijk,A
+2020-10-17,AZ Alkmaar,VVV-Venlo,D
+2020-10-17,Willem II,Twente,A
+2020-10-18,Feyenoord,Sparta Rotterdam,D
+2020-10-18,Ajax,Heerenveen,H
+2020-10-18,ADO Den Haag,Vitesse,A
+2020-10-18,Groningen,Utrecht,D
+2020-10-18,Zwolle,PSV Eindhoven,A
+2020-10-18,Emmen,Fortuna Sittard,D
+2020-10-21,Waalwijk,Zwolle,D
+2020-10-24,VVV-Venlo,Ajax,A
+2020-10-24,Utrecht,Twente,H
+2020-10-24,Zwolle,Willem II,D
+2020-10-24,Heerenveen,Emmen,H
+2020-10-25,Fortuna Sittard,Groningen,A
+2020-10-25,Sparta Rotterdam,Heracles Almeno,D
+2020-10-25,Vitesse,PSV Eindhoven,H
+2020-10-25,Waalwijk,Feyenoord,D
+2020-10-25,ADO Den Haag,AZ Alkmaar,D
+2020-10-31,Twente,Zwolle,H
+2020-10-31,Ajax,Fortuna Sittard,H
+2020-10-31,Groningen,VVV-Venlo,H
+2020-10-31,Willem II,Vitesse,A
+2020-11-01,Heracles Almeno,Utrecht,H
+2020-11-01,Emmen,Feyenoord,A
+2020-11-01,Sparta Rotterdam,Heerenveen,A
+2020-11-01,PSV Eindhoven,ADO Den Haag,H
+2020-11-01,AZ Alkmaar,Waalwijk,H
+2020-11-06,Fortuna Sittard,Zwolle,D
+2020-11-07,ADO Den Haag,Twente,A
+2020-11-07,VVV-Venlo,Heracles Almeno,H
+2020-11-07,Waalwijk,Sparta Rotterdam,A
+2020-11-08,Utrecht,Ajax,A
+2020-11-08,Feyenoord,Groningen,H
+2020-11-08,Vitesse,Emmen,H
+2020-11-08,Heerenveen,AZ Alkmaar,A
+2020-11-08,PSV Eindhoven,Willem II,H
+2020-11-21,Willem II,VVV-Venlo,H
+2020-11-21,Groningen,Vitesse,D
+2020-11-21,Zwolle,Utrecht,D
+2020-11-22,Ajax,Heracles Almeno,H
+2020-11-22,Fortuna Sittard,Feyenoord,A
+2020-11-22,Sparta Rotterdam,ADO Den Haag,H
+2020-11-22,Twente,PSV Eindhoven,D
+2020-11-22,Waalwijk,Heerenveen,D
+2020-11-22,AZ Alkmaar,Emmen,H
+2020-11-27,Twente,Waalwijk,A
+2020-11-28,Emmen,Ajax,A
+2020-11-28,ADO Den Haag,Heerenveen,D
+2020-11-28,VVV-Venlo,Zwolle,D
+2020-11-29,Vitesse,Fortuna Sittard,H
+2020-11-29,Feyenoord,Utrecht,D
+2020-11-29,Groningen,Willem II,H
+2020-11-29,Heracles Almeno,AZ Alkmaar,A
+2020-11-29,PSV Eindhoven,Sparta Rotterdam,H
+2020-12-04,Sparta Rotterdam,Emmen,H
+2020-12-05,Waalwijk,VVV-Venlo,H
+2020-12-05,Fortuna Sittard,Willem II,H
+2020-12-05,Ajax,Twente,A
+2020-12-05,Zwolle,Vitesse,H
+2020-12-06,Feyenoord,Heracles Almeno,D
+2020-12-06,AZ Alkmaar,Groningen,A
+2020-12-06,Utrecht,ADO Den Haag,D
+2020-12-06,Heerenveen,PSV Eindhoven,D
+2020-12-11,Heracles Almeno,Fortuna Sittard,A
+2020-12-12,Groningen,Waalwijk,H
+2020-12-12,Emmen,ADO Den Haag,D
+2020-12-12,Ajax,Zwolle,H
+2020-12-13,Vitesse,Heerenveen,D
+2020-12-13,VVV-Venlo,Feyenoord,A
+2020-12-13,Willem II,Sparta Rotterdam,A
+2020-12-13,PSV Eindhoven,Utrecht,H
+2020-12-13,Twente,AZ Alkmaar,A
+2020-12-18,Zwolle,Emmen,D
+2020-12-19,Sparta Rotterdam,Groningen,A
+2020-12-19,VVV-Venlo,Twente,A
+2020-12-19,Waalwijk,PSV Eindhoven,A
+2020-12-19,Utrecht,Fortuna Sittard,D
+2020-12-20,Vitesse,Feyenoord,H
+2020-12-20,ADO Den Haag,Ajax,A
+2020-12-20,Heerenveen,Heracles Almeno,A
+2020-12-20,AZ Alkmaar,Willem II,H
+2020-12-22,Fortuna Sittard,Waalwijk,H
+2020-12-22,Emmen,Utrecht,A
+2020-12-22,PSV Eindhoven,VVV-Venlo,H
+2020-12-22,Twente,Sparta Rotterdam,A
+2020-12-23,AZ Alkmaar,Vitesse,H
+2020-12-23,Willem II,Ajax,D
+2020-12-23,ADO Den Haag,Zwolle,A
+2020-12-23,Groningen,Heracles Almeno,A
+2020-12-23,Feyenoord,Heerenveen,H
+2020-12-27,Utrecht,AZ Alkmaar,D
+2021-01-09,Waalwijk,ADO Den Haag,A
+2021-01-09,Emmen,Twente,A
+2021-01-09,Heracles Almeno,Vitesse,A
+2021-01-09,Zwolle,AZ Alkmaar,D
+2021-01-09,Utrecht,Groningen,D
+2021-01-10,Sparta Rotterdam,Feyenoord,A
+2021-01-10,Heerenveen,Fortuna Sittard,A
+2021-01-10,VVV-Venlo,Willem II,H
+2021-01-10,Ajax,PSV Eindhoven,D
+2021-01-12,Vitesse,Utrecht,H
+2021-01-12,Heracles Almeno,Emmen,H
+2021-01-13,PSV Eindhoven,AZ Alkmaar,A
+2021-01-13,ADO Den Haag,VVV-Venlo,A
+2021-01-13,Fortuna Sittard,Sparta Rotterdam,A
+2021-01-13,Feyenoord,Zwolle,H
+2021-01-14,Heerenveen,Waalwijk,D
+2021-01-14,Twente,Ajax,A
+2021-01-14,Willem II,Groningen,A
+2021-01-16,Emmen,Vitesse,A
+2021-01-16,Sparta Rotterdam,PSV Eindhoven,A
+2021-01-16,Utrecht,Heracles Almeno,H
+2021-01-16,Zwolle,Fortuna Sittard,A
+2021-01-16,AZ Alkmaar,ADO Den Haag,H
+2021-01-17,Waalwijk,Willem II,D
+2021-01-17,Groningen,Twente,D
+2021-01-17,VVV-Venlo,Heerenveen,D
+2021-01-17,Ajax,Feyenoord,H
+2021-01-22,Willem II,Zwolle,A
+2021-01-23,ADO Den Haag,Emmen,D
+2021-01-23,Vitesse,Groningen,H
+2021-01-23,PSV Eindhoven,Waalwijk,H
+2021-01-23,Heracles Almeno,Heerenveen,H
+2021-01-24,Fortuna Sittard,Ajax,A
+2021-01-24,Twente,VVV-Venlo,A
+2021-01-24,Utrecht,Sparta Rotterdam,H
+2021-01-24,Feyenoord,AZ Alkmaar,A
+2021-01-26,Zwolle,Heracles Almeno,D
+2021-01-26,Emmen,PSV Eindhoven,A
+2021-01-26,Groningen,ADO Den Haag,H
+2021-01-27,AZ Alkmaar,Utrecht,A
+2021-01-27,VVV-Venlo,Vitesse,H
+2021-01-27,Waalwijk,Fortuna Sittard,A
+2021-01-27,Heerenveen,Feyenoord,H
+2021-01-28,Ajax,Willem II,H
+2021-01-28,Sparta Rotterdam,Twente,D
+2021-01-30,Heracles Almeno,Groningen,H
+2021-01-30,Utrecht,Zwolle,D
+2021-01-30,Fortuna Sittard,VVV-Venlo,H
+2021-01-30,Vitesse,Waalwijk,D
+2021-01-31,Twente,Heerenveen,D
+2021-01-31,Feyenoord,PSV Eindhoven,H
+2021-01-31,Willem II,Emmen,H
+2021-01-31,AZ Alkmaar,Ajax,A
+2021-01-31,ADO Den Haag,Sparta Rotterdam,D
+2021-02-05,Fortuna Sittard,Heracles Almeno,A
+2021-02-06,Emmen,AZ Alkmaar,A
+2021-02-06,Zwolle,Waalwijk,D
+2021-02-06,Heerenveen,Vitesse,H
+2021-02-06,PSV Eindhoven,Twente,H
+2021-02-12,Waalwijk,Emmen,H
+2021-02-13,Groningen,Zwolle,H
+2021-02-13,Sparta Rotterdam,Fortuna Sittard,A
+2021-02-13,ADO Den Haag,PSV Eindhoven,D
+2021-02-13,Heracles Almeno,Ajax,A
+2021-02-14,AZ Alkmaar,Heerenveen,H
+2021-02-14,Feyenoord,Willem II,H
+2021-02-14,Utrecht,VVV-Venlo,H
+2021-02-14,Vitesse,Twente,A
+2021-02-19,Willem II,Utrecht,A
+2021-02-20,Emmen,Zwolle,H
+2021-02-20,VVV-Venlo,AZ Alkmaar,A
+2021-02-20,Fortuna Sittard,ADO Den Haag,H
+2021-02-21,Twente,Feyenoord,D
+2021-02-21,Heerenveen,Groningen,D
+2021-02-21,Waalwijk,Heracles Almeno,H
+2021-02-21,PSV Eindhoven,Vitesse,H
+2021-02-21,Ajax,Sparta Rotterdam,H
+2021-02-24,Willem II,ADO Den Haag,D
+2021-02-24,Groningen,Feyenoord,D
+2021-02-26,Zwolle,Heerenveen,H
+2021-02-27,Utrecht,Emmen,A
+2021-02-27,ADO Den Haag,Waalwijk,D
+2021-02-27,Vitesse,VVV-Venlo,H
+2021-02-27,Heracles Almeno,Twente,D
+2021-02-28,Sparta Rotterdam,Willem II,A
+2021-02-28,Groningen,Fortuna Sittard,H
+2021-02-28,PSV Eindhoven,Ajax,D
+2021-02-28,AZ Alkmaar,Feyenoord,H
+2021-03-05,Emmen,Sparta Rotterdam,D
+2021-03-06,Feyenoord,VVV-Venlo,H
+2021-03-06,Twente,Willem II,D
+2021-03-06,Heerenveen,ADO Den Haag,H
+2021-03-06,Waalwijk,Utrecht,A
+2021-03-07,Ajax,Groningen,H
+2021-03-07,Fortuna Sittard,PSV Eindhoven,A
+2021-03-07,Heracles Almeno,Zwolle,H
+2021-03-07,Vitesse,AZ Alkmaar,H
+2021-03-09,VVV-Venlo,Sparta Rotterdam,A
+2021-03-13,Willem II,Heerenveen,H
+2021-03-13,ADO Den Haag,Heracles Almeno,A
+2021-03-13,AZ Alkmaar,Twente,H
+2021-03-13,Groningen,Emmen,D
+2021-03-13,Sparta Rotterdam,Waalwijk,H
+2021-03-14,VVV-Venlo,Fortuna Sittard,A
+2021-03-14,PSV Eindhoven,Feyenoord,D
+2021-03-14,Utrecht,Vitesse,A
+2021-03-14,Zwolle,Ajax,A
+2021-03-19,Heerenveen,Twente,D
+2021-03-20,Fortuna Sittard,Utrecht,A
+2021-03-20,Feyenoord,Emmen,D
+2021-03-20,Waalwijk,Groningen,H
+2021-03-21,Zwolle,VVV-Venlo,H
+2021-03-21,AZ Alkmaar,PSV Eindhoven,H
+2021-03-21,Vitesse,Willem II,D
+2021-03-21,Heracles Almeno,Sparta Rotterdam,D
+2021-03-21,Ajax,ADO Den Haag,H
+2021-04-03,VVV-Venlo,Groningen,A
+2021-04-03,Twente,Vitesse,A
+2021-04-03,Willem II,AZ Alkmaar,A
+2021-04-03,Sparta Rotterdam,Zwolle,H
+2021-04-04,Feyenoord,Fortuna Sittard,H
+2021-04-04,ADO Den Haag,Utrecht,A
+2021-04-04,PSV Eindhoven,Heracles Almeno,H
+2021-04-04,Emmen,Waalwijk,H
+2021-04-04,Heerenveen,Ajax,A
+2021-04-09,Vitesse,ADO Den Haag,D
+2021-04-10,Heracles Almeno,Willem II,H
+2021-04-10,AZ Alkmaar,Sparta Rotterdam,H
+2021-04-10,Fortuna Sittard,Emmen,A
+2021-04-10,Zwolle,Twente,H
+2021-04-11,Utrecht,Feyenoord,A
+2021-04-11,Groningen,Heerenveen,A
+2021-04-11,VVV-Venlo,PSV Eindhoven,A
+2021-04-11,Waalwijk,Ajax,A
+2021-04-22,Ajax,Utrecht,D
+2021-04-23,Willem II,Waalwijk,H
+2021-04-24,Heerenveen,Zwolle,A
+2021-04-24,PSV Eindhoven,Groningen,H
+2021-04-24,Sparta Rotterdam,VVV-Venlo,H
+2021-04-25,Emmen,Heracles Almeno,H
+2021-04-25,Ajax,AZ Alkmaar,H
+2021-04-25,ADO Den Haag,Fortuna Sittard,A
+2021-04-25,Feyenoord,Vitesse,D
+2021-04-25,Twente,Utrecht,A
+2021-05-01,Heracles Almeno,VVV-Venlo,H
+2021-05-01,Fortuna Sittard,Twente,H
+2021-05-01,Vitesse,Zwolle,H
+2021-05-01,Waalwijk,AZ Alkmaar,A
+2021-05-01,Utrecht,Willem II,H
+2021-05-02,ADO Den Haag,Feyenoord,H
+2021-05-02,Ajax,Emmen,H
+2021-05-02,Groningen,Sparta Rotterdam,A
+2021-05-02,PSV Eindhoven,Heerenveen,D
+2021-05-07,Sparta Rotterdam,Vitesse,H
+2021-05-08,Twente,Heracles Almeno,D
+2021-05-08,Heerenveen,Utrecht,D
+2021-05-08,AZ Alkmaar,Fortuna Sittard,H
+2021-05-08,VVV-Venlo,Waalwijk,D
+2021-05-09,Emmen,Groningen,A
+2021-05-09,Feyenoord,Ajax,A
+2021-05-09,Zwolle,ADO Den Haag,A
+2021-05-09,Willem II,PSV Eindhoven,A
+2021-05-13,Ajax,VVV-Venlo,H
+2021-05-13,ADO Den Haag,Willem II,A
+2021-05-13,Emmen,Heerenveen,H
+2021-05-13,Fortuna Sittard,Vitesse,D
+2021-05-13,Groningen,AZ Alkmaar,D
+2021-05-13,Heracles Almeno,Feyenoord,D
+2021-05-13,PSV Eindhoven,Zwolle,H
+2021-05-13,Sparta Rotterdam,Utrecht,D
+2021-05-13,Waalwijk,Twente,H
+2021-05-16,AZ Alkmaar,Heracles Almeno,H
+2021-05-16,Feyenoord,Waalwijk,H
+2021-05-16,Heerenveen,Sparta Rotterdam,A
+2021-05-16,Twente,ADO Den Haag,H
+2021-05-16,Utrecht,PSV Eindhoven,D
+2021-05-16,Vitesse,Ajax,A
+2021-05-16,VVV-Venlo,Emmen,A
+2021-05-16,Willem II,Fortuna Sittard,H
+2021-05-16,Zwolle,Groningen,H
