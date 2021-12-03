@@ -12,7 +12,7 @@ from query_strings import dutch_event, dutch_lineup
 star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
 league_manager = DatabaseManager('postgres', 'postgres', 'tassu-holandska_liga')
 
-countries_df = pd.read_csv(f"matches.csv", usecols=['Date', 'HomeTeam', 'AwayTeam', 'FTR'])
+countries_df = pd.read_csv(f"netherlands_matches.csv", usecols=['Date', 'HomeTeam', 'AwayTeam', 'FTR'])
 def get_result_by_code(code1, code2, code3):
     try: result = countries_df.loc[(countries_df['Date'] == str(code1)) & (countries_df['HomeTeam'] == str(code2)) & (countries_df['AwayTeam'] == str(code3)), 'FTR'].iloc[0]
     except: result=None
