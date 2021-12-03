@@ -8,10 +8,6 @@ from psycopg2 import Error
 
 from db_manager import DatabaseManager
 from query_strings import dutch_event, dutch_lineup
-<<<<<<< HEAD
-
-=======
->>>>>>> b0484c4eeff6921f560019ab963fd30849b9c923
 
 star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
 league_manager = DatabaseManager('postgres', 'postgres', 'tassu-holandska_liga')
