@@ -8,14 +8,17 @@ from psycopg2 import Error
 
 from db_manager import DatabaseManager
 from query_strings import dutch_event, dutch_lineup
+<<<<<<< HEAD
 
+=======
+>>>>>>> b0484c4eeff6921f560019ab963fd30849b9c923
 
 star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
 league_manager = DatabaseManager('postgres', 'postgres', 'tassu-holandska_liga')
 
-countries_df = pd.read_csv(f"matches.csv", usecols=['Date', 'HomeTeam', 'AwayTeam', 'FTR'])
+matches_df = pd.read_csv(f"netherlands_matches.csv", usecols=['Date', 'HomeTeam', 'AwayTeam', 'FTR'])
 def get_result_by_code(code1, code2, code3):
-    try: result = countries_df.loc[(countries_df['Date'] == str(code1)) & (countries_df['HomeTeam'] == str(code2)) & (countries_df['AwayTeam'] == str(code3)), 'FTR'].iloc[0]
+    try: result = matches_df.loc[(matches_df['Date'] == str(code1)) & (matches_df['HomeTeam'] == str(code2)) & (matches_df['AwayTeam'] == str(code3)), 'FTR'].iloc[0]
     except: result=None
     #except: raise ValueError(f'{code1} {code2} {code3} result problem')
     return result
@@ -72,7 +75,7 @@ def fill_in_lineup_fact_table():
     for i, record in enumerate(lineup_records[:]):
         result = get_result_by_code(record[8], record[5], record[6])
         if(result==None):
-            i+=1
+            #i+=1
             continue
         else:
             result = league_manager.get_result_from_char(result)
@@ -104,7 +107,7 @@ def fill_in_event_fact_table():
         # print(record)
         result = get_result_by_code(record[4], record[7], record[8])
         if(result==None):
-            i+=1
+            #i+=1
             continue
         else:
             result = league_manager.get_result_from_char(result)
