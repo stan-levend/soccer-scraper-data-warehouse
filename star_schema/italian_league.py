@@ -1,20 +1,17 @@
 import time
 from db_manager import DatabaseManager
 from query_strings import italian_events, italian_subs, italian_lineups
+from db_connector import star_schema_manager
 
-star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
-league_manager = DatabaseManager('postgres', 'postgres', 'tassu')
 
-def main():
-    # index = manager.get_index_if_exists('match', {'date': '2018-08-18', 'home_goals': 2, 'away_goals': 3, 'season': 2018})
-    # index = manager.insert_into_table('building', {'city': 'kosice', 'name': 'test', 'street': 'sturova 10'})
+def fill_in_italian_league(league_manager):
 
-    # fill_in_event_fact_table()
-    fill_in_lineup_fact_table()
+    fill_in_event_fact_table(league_manager)
+    fill_in_lineup_fact_table(league_manager)
 
-    star_schema_manager.close_connection()
+    league_manager.close_connection()
 
-def insert_into_common_tables(name, position, birth_date, nationality, match_date, season, result, home_team, playing_team):
+def insert_into_common_tables(league_manager, name, position, birth_date, nationality, match_date, season, result, home_team, playing_team):
     player_id = star_schema_manager.insert_into_table("player", {
         "name": name.replace("'", " "),
         "position": position,
@@ -46,13 +43,12 @@ def insert_into_common_tables(name, position, birth_date, nationality, match_dat
     return player_id, match_date_id, match_id, league_team_id
 
 
-def fill_in_lineup_fact_table():
+def fill_in_lineup_fact_table(league_manager):
     lineup_records = league_manager.query(italian_lineups)
 
-    print(f"Processing {len(lineup_records)}.")
+    print(f"Processing italian lineups - {len(lineup_records)} records.")
     for i, record in enumerate(lineup_records[:]):
-
-        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
+        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(league_manager,
             name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[7], season=record[8],
             result=record[9], home_team=record[4], playing_team=record[6]
         )
@@ -66,16 +62,17 @@ def fill_in_lineup_fact_table():
         if not fetched_record:
             match_date_id = star_schema_manager.insert_into_table("lineup_fact_table", fact_table_content, id=None)
         else:
-            print(f"{i} Duplicate player, not inserting.")
+            # print(f"{i} Duplicate player, not inserting.")
+            pass
 
-        if i % 1000 == 0: print(f"{i} records done")
+        # if i % 1000 == 0: print(f"{i} records done")
 
 
     # WE NEED TO FIND SUBSTITUTIONS AND SUBSTRACT/ADD TIME TO THE TIME PLAYED THAT WE HAVE OBTAINED ALREADY
     substitution_records = league_manager.query(italian_subs)
-    print(f"Processing {len(substitution_records)} substitution_records.")
+    print(f"Processing italian substitution_records for lineups - {len(substitution_records)} records.")
     for i, record in enumerate(substitution_records[:]):
-        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
+        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(league_manager,
             name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[7], season=record[8],
             result=record[9], home_team=record[4], playing_team=record[6]
         )
@@ -96,18 +93,19 @@ def fill_in_lineup_fact_table():
                 elif event_type == 'sub off': new_time = event_time
             star_schema_manager.update_record("lineup_fact_table", fact_table_fk_dict, "time_played", new_time)
         else:
-            print("Record not found")
+            # print("Record not found")
+            pass
 
-        if i % 1000 == 0: print(f"{i} records done")
+        # if i % 1000 == 0: print(f"{i} records done")
 
 
-def fill_in_event_fact_table():
+def fill_in_event_fact_table(league_manager):
     records = league_manager.query(italian_events)
 
-    print(f"Processing {len(records)}.")
-    for i, record in enumerate(records[:5]):
+    print(f"Processing italian events - {len(records)} records.")
+    for i, record in enumerate(records[:]):
         # print(record)
-        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
+        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(league_manager,
             name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[7], season=record[8],
             result=record[9], home_team=record[4], playing_team=record[6]
         )
@@ -140,13 +138,13 @@ def fill_in_event_fact_table():
             match_date_id = star_schema_manager.insert_into_table("event_fact_table", fact_table_content, id=None)
         else:
             attribute_to_inc = star_schema_manager.get_dict_key_for_increment(fact_table_facts_dict, 1)
-            print(f"{i} Already in the fact table")
+            # print(f"{i} Already in the fact table")
             star_schema_manager.increment_attribute_in_record("event_fact_table", fact_table_fk_dict, attribute_to_inc)
-        if i % 1000 == 0: print(f"{i} records done")
+        # if i % 1000 == 0: print(f"{i} records done")
 
     league_manager.close_connection()
 
 
 if __name__ == '__main__':
-    main()
+    # fill_in_italian_league()
     pass

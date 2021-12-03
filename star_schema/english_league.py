@@ -1,20 +1,19 @@
 import time
 from db_manager import DatabaseManager
 from query_strings import english_substitutions, english_goals, english_cards, english_assists
+from db_connector import star_schema_manager
 
-star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
-league_manager = DatabaseManager('postgres', 'postgres', 'english')
 
-def main():
-    # fill_in_event_fact_table_cards()
-    # fill_in_event_fact_table_goals()
-    # fill_in_event_fact_table_substitutions()
-    # fill_in_event_fact_table_assists()
+def fill_in_english_league(league_manager):
+
+    fill_in_event_fact_table_cards(league_manager)
+    fill_in_event_fact_table_goals(league_manager)
+    fill_in_event_fact_table_substitutions(league_manager)
+    fill_in_event_fact_table_assists(league_manager)
 
     league_manager.close_connection()
-    star_schema_manager.close_connection()
 
-def insert_into_common_tables(name, position, birth_date, nationality, match_date, season, result, home_team, playing_team, venue):
+def insert_into_common_tables(league_manager, name, position, birth_date, nationality, match_date, season, result, home_team, playing_team, venue):
     player_id = star_schema_manager.insert_into_table("player", {
         "name": name.replace("'", " "),
         "position": position,
@@ -47,10 +46,10 @@ def insert_into_common_tables(name, position, birth_date, nationality, match_dat
     return player_id, match_date_id, match_id, league_team_id
 
 
-def fill_in_event_fact_table_cards():
+def fill_in_event_fact_table_cards(league_manager):
     records = league_manager.query(english_cards)
 
-    print(f"Processing {len(records)}.")
+    print(f"Processing english cards - {len(records)} records.")
     for i, record in enumerate(records[:]):
         # print(record)
 
@@ -58,21 +57,16 @@ def fill_in_event_fact_table_cards():
         result = league_manager.get_result_from_goals(record[6], record[7])
         season = f"{record[8].year}-{record[9].year}"
 
-        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
+        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(league_manager,
             name=record[0].strip(), position=record[3].strip(), birth_date=record[2], nationality=record[1].strip(), match_date=record[4], season=season,
             result=result, home_team=record[11], playing_team=record[10], venue=venue_city[0]
         )
-
         event_time_id = star_schema_manager.insert_into_table("event_time", {
             "time": str(record[14]),
             "half": str(league_manager.get_half_from_minute(record[14]))
         })
 
-        # print(player_id, match_date_id, match_id, league_team_id, event_time_id)
-
-        fact_table_fk_dict = {
-            "player_id": str(player_id), "match_date_id": str(match_date_id), "match_id": str(match_id), "league_team_id": str(league_team_id), "event_time_id": str(event_time_id),
-        }
+        fact_table_fk_dict = { "player_id": str(player_id), "match_date_id": str(match_date_id), "match_id": str(match_id), "league_team_id": str(league_team_id), "event_time_id": str(event_time_id), }
 
         event_type = record[13].strip()
         # print(event_type)
@@ -93,15 +87,15 @@ def fill_in_event_fact_table_cards():
             match_date_id = star_schema_manager.insert_into_table("event_fact_table", fact_table_content, id=None)
         else:
             attribute_to_inc = star_schema_manager.get_dict_key_for_increment(fact_table_facts_dict, 1)
-            print(f"{i} Already in the fact table")
+            # print(f"{i} Already in the fact table")
             star_schema_manager.increment_attribute_in_record("event_fact_table", fact_table_fk_dict, attribute_to_inc)
-        if i % 1000 == 0: print(f"{i} records done")
+        # if i % 1000 == 0: print(f"{i} records done")
 
 
-def fill_in_event_fact_table_goals():
+def fill_in_event_fact_table_goals(league_manager):
     records = league_manager.query(english_goals)
 
-    print(f"Processing {len(records)}.")
+    print(f"Processing english goals - {len(records)} records.")
     for i, record in enumerate(records[:]):
         # print(record)
 
@@ -109,16 +103,14 @@ def fill_in_event_fact_table_goals():
         result = league_manager.get_result_from_goals(record[6], record[7])
         season = f"{record[8].year}-{record[9].year}"
 
-        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
+        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(league_manager,
             name=record[0].strip(), position=record[3].strip(), birth_date=record[2], nationality=record[1].strip(), match_date=record[4], season=season,
             result=result, home_team=record[11], playing_team=record[10], venue=venue_city[0]
         )
-
         event_time_id = star_schema_manager.insert_into_table("event_time", {
             "time": str(record[13]),
             "half": str(league_manager.get_half_from_minute(record[13]))
         })
-        # print(player_id, match_date_id, match_id, league_team_id, event_time_id)
 
         fact_table_fk_dict = {"player_id": str(player_id), "match_date_id": str(match_date_id), "match_id": str(match_id), "league_team_id": str(league_team_id), "event_time_id": str(event_time_id), }
         fact_table_facts_dict = {"count_goals": str(1), "count_own_goals": str(0), "count_yellow_cards": str(0), "count_red_cards": str(0), "count_assists": str(0), "count_substitution_in": str(0), "count_substitution_off": str(0)}
@@ -130,15 +122,15 @@ def fill_in_event_fact_table_goals():
             match_date_id = star_schema_manager.insert_into_table("event_fact_table", fact_table_content, id=None)
         else:
             attribute_to_inc = star_schema_manager.get_dict_key_for_increment(fact_table_facts_dict, 1)
-            print(f"{i} Already in the fact table")
+            # print(f"{i} Already in the fact table")
             star_schema_manager.increment_attribute_in_record("event_fact_table", fact_table_fk_dict, attribute_to_inc)
-        if i % 1000 == 0: print(f"{i} records done")
+        # if i % 1000 == 0: print(f"{i} records done")
 
 
-def fill_in_event_fact_table_assists():
+def fill_in_event_fact_table_assists(league_manager):
     records = league_manager.query(english_assists)
 
-    print(f"Processing {len(records)}.")
+    print(f"Processing english assists - {len(records)} records.")
     for i, record in enumerate(records[:]):
         # print(record)
 
@@ -146,16 +138,14 @@ def fill_in_event_fact_table_assists():
         result = league_manager.get_result_from_goals(record[6], record[7])
         season = f"{record[8].year}-{record[9].year}"
 
-        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
+        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(league_manager,
             name=record[0].strip(), position=record[3].strip(), birth_date=record[2], nationality=record[1].strip(), match_date=record[4], season=season,
             result=result, home_team=record[11], playing_team=record[10], venue=venue_city[0]
         )
-
         event_time_id = star_schema_manager.insert_into_table("event_time", {
             "time": str(record[13]),
             "half": str(league_manager.get_half_from_minute(record[13]))
         })
-        # print(player_id, match_date_id, match_id, league_team_id, event_time_id)
 
         fact_table_fk_dict = {"player_id": str(player_id), "match_date_id": str(match_date_id), "match_id": str(match_id), "league_team_id": str(league_team_id), "event_time_id": str(event_time_id), }
         fact_table_facts_dict = {"count_goals": str(0), "count_own_goals": str(0), "count_yellow_cards": str(0), "count_red_cards": str(0), "count_assists": str(1), "count_substitution_in": str(0), "count_substitution_off": str(0)}
@@ -169,13 +159,13 @@ def fill_in_event_fact_table_assists():
         #     attribute_to_inc = star_schema_manager.get_dict_key_for_increment(fact_table_facts_dict, 1)
         #     print(f"{i} Already in the fact table")
         #     star_schema_manager.increment_attribute_in_record("event_fact_table", fact_table_fk_dict, attribute_to_inc)
-        if i % 1000 == 0: print(f"{i} records done")
+        # if i % 1000 == 0: print(f"{i} records done")
 
 
-def fill_in_event_fact_table_substitutions():
+def fill_in_event_fact_table_substitutions(league_manager):
     records = league_manager.query(english_substitutions)
 
-    print(f"Processing {len(records)*2}.")
+    print(f"Processing english subs - {len(records)*2} records.")
     for i, record in enumerate(records[:]):
         # print(record)
         venue_city = record[5].split('-')
@@ -183,17 +173,14 @@ def fill_in_event_fact_table_substitutions():
         season = f"{record[8].year}-{record[9].year}"
 
         #SUB ON
-        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
+        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(league_manager,
             name=record[0].strip(), position=record[3].strip(), birth_date=record[2], nationality=record[1].strip(), match_date=record[4], season=season,
             result=result, home_team=record[11], playing_team=record[10], venue=venue_city[0]
         )
-
         event_time_id = star_schema_manager.insert_into_table("event_time", {
             "time": str(record[13]),
             "half": str(league_manager.get_half_from_minute(record[13]))
         })
-
-        # print(player_id, match_date_id, match_id, league_team_id, event_time_id)
 
         fact_table_fk_dict = { "player_id": str(player_id), "match_date_id": str(match_date_id), "match_id": str(match_id), "league_team_id": str(league_team_id), "event_time_id": str(event_time_id)}
         fact_table_facts_dict = { "count_goals": str(0), "count_own_goals": str(0), "count_yellow_cards": str(0), "count_red_cards": str(0), "count_assists": str(0), "count_substitution_in": str(1), "count_substitution_off": str(0)}
@@ -205,21 +192,18 @@ def fill_in_event_fact_table_substitutions():
             match_date_id = star_schema_manager.insert_into_table("event_fact_table", fact_table_content, id=None)
         else:
             attribute_to_inc = star_schema_manager.get_dict_key_for_increment(fact_table_facts_dict, 1)
-            print(f"{i} Already in the fact table")
+            # print(f"{i} Already in the fact table")
             star_schema_manager.increment_attribute_in_record("event_fact_table", fact_table_fk_dict, attribute_to_inc)
 
         #SUB OFF
-        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
+        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(league_manager,
             name=record[14].strip(), position=record[17].strip(), birth_date=record[16], nationality=record[15].strip(), match_date=record[4], season=season,
             result=result, home_team=record[11], playing_team=record[10], venue=venue_city[0]
         )
-
         event_time_id = star_schema_manager.insert_into_table("event_time", {
             "time": str(record[13]),
             "half": str(league_manager.get_half_from_minute(record[13]))
         })
-
-        # print(player_id, match_date_id, match_id, league_team_id, event_time_id)
 
         fact_table_fk_dict = { "player_id": str(player_id), "match_date_id": str(match_date_id), "match_id": str(match_id), "league_team_id": str(league_team_id), "event_time_id": str(event_time_id)}
         fact_table_facts_dict = { "count_goals": str(0), "count_own_goals": str(0), "count_yellow_cards": str(0), "count_red_cards": str(0), "count_assists": str(0), "count_substitution_in": str(0), "count_substitution_off": str(1)}
@@ -231,11 +215,11 @@ def fill_in_event_fact_table_substitutions():
             match_date_id = star_schema_manager.insert_into_table("event_fact_table", fact_table_content, id=None)
         else:
             attribute_to_inc = star_schema_manager.get_dict_key_for_increment(fact_table_facts_dict, 1)
-            print(f"{i*2} Already in the fact table")
+            # print(f"{i*2} Already in the fact table")
             star_schema_manager.increment_attribute_in_record("event_fact_table", fact_table_fk_dict, attribute_to_inc)
-        if i % 1000 == 0: print(f"{i*2} records done")
+        # if i % 1000 == 0: print(f"{i*2} records done")
 
 
 if __name__ == '__main__':
-    main()
+    # fill_in_english_league()
     pass
