@@ -7,7 +7,8 @@ from datetime import datetime
 from psycopg2 import Error
 
 from db_manager import DatabaseManager
-from query import dutch_event, dutch_lineup
+from query_strings import dutch_event, dutch_lineup
+
 
 star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
 league_manager = DatabaseManager('postgres', 'postgres', 'tassu-holandska_liga')

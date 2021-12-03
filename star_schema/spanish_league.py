@@ -1,10 +1,12 @@
 import pandas as pd
 import time
 from query_strings import spain_goals_assists, spain_cards, spain_substitution, spain_lineups
-from db_connector import star_schema_manager
+from db_manager import DatabaseManager
 
 
-countries_df = pd.read_csv(f"./tassu-2021/star_schema/world.csv", usecols=['name', 'alpha3'])
+star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
+countries_df = pd.read_csv(f"star_schema/world.csv", usecols=['name', 'alpha3'])
+
 
 def get_country_by_code(code):
     try: return countries_df.loc[countries_df['alpha3'] == str(code).lower(), 'name'].iloc[0]
@@ -19,6 +21,8 @@ def fill_in_spanish_league(league_manager):
     fill_in_lineup_fact_table(league_manager)
 
     league_manager.close_connection()
+    star_schema_manager.close_connection()
+
 
 def insert_into_common_tables(league_manager, name, position, birth_date, nationality, match_date, season, result, home_team, playing_team, venue):
     player_id = star_schema_manager.insert_into_table("player", {

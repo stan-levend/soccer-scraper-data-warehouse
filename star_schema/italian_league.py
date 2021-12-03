@@ -1,8 +1,8 @@
 import time
 from db_manager import DatabaseManager
 from query_strings import italian_events, italian_subs, italian_lineups
-from db_connector import star_schema_manager
 
+star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
 
 def fill_in_italian_league(league_manager):
 
@@ -10,6 +10,7 @@ def fill_in_italian_league(league_manager):
     fill_in_lineup_fact_table(league_manager)
 
     league_manager.close_connection()
+    star_schema_manager.close_connection()
 
 def insert_into_common_tables(league_manager, name, position, birth_date, nationality, match_date, season, result, home_team, playing_team):
     player_id = star_schema_manager.insert_into_table("player", {
