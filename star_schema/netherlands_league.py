@@ -7,7 +7,7 @@ from datetime import datetime
 from psycopg2 import Error
 
 from db_manager import DatabaseManager
-from query import dutch_event, dutch_lineup
+from query_strings import dutch_event, dutch_lineup
 
 star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
 league_manager = DatabaseManager('postgres', 'postgres', 'tassu-holandska_liga')
@@ -71,7 +71,7 @@ def fill_in_lineup_fact_table():
     for i, record in enumerate(lineup_records[:]):
         result = get_result_by_code(record[8], record[5], record[6])
         if(result==None):
-            i+=1
+            #i+=1
             continue
         else:
             result = league_manager.get_result_from_char(result)
@@ -103,7 +103,7 @@ def fill_in_event_fact_table():
         # print(record)
         result = get_result_by_code(record[4], record[7], record[8])
         if(result==None):
-            i+=1
+            #i+=1
             continue
         else:
             result = league_manager.get_result_from_char(result)
