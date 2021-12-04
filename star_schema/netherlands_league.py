@@ -1,18 +1,11 @@
-import time
+from pexpect.replwrap import python
 import pandas as pd
-import numpy as np
-
-from datetime import date
-from datetime import datetime
-from psycopg2 import Error
-
 from db_manager import DatabaseManager
 from query_strings import dutch_event, dutch_lineup
 
 star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
-league_manager = DatabaseManager('postgres', 'postgres', 'tassu-holandska_liga')
 
-matches_df = pd.read_csv(f"netherlands_matches.csv", usecols=['Date', 'HomeTeam', 'AwayTeam', 'FTR'])
+matches_df = pd.read_csv(f"star_schema/netherlands_matches.csv", usecols=['Date', 'HomeTeam', 'AwayTeam', 'FTR'])
 def get_result_by_code(code1, code2, code3):
     try: result = matches_df.loc[(matches_df['Date'] == str(code1)) & (matches_df['HomeTeam'] == str(code2)) & (matches_df['AwayTeam'] == str(code3)), 'FTR'].iloc[0]
     except: result=None
@@ -21,21 +14,20 @@ def get_result_by_code(code1, code2, code3):
     print(result)
 
 
-def main():
-    # index = manager.get_index_if_exists('match', {'date': '2018-08-18', 'home_goals': 2, 'away_goals': 3, 'season': 2018})
-    # index = manager.insert_into_table('building', {'city': 'kosice', 'name': 'test', 'street': 'sturova 10'})
+def fill_in_netherlands_league(league_manager):
 
-    # fill_in_event_fact_table()
-    fill_in_lineup_fact_table()
+    fill_in_lineup_fact_table(league_manager)
+    fill_in_event_fact_table(league_manager)
 
     star_schema_manager.close_connection()
+    league_manager.close_connection()
 
-def insert_into_common_tables(name, position, birth_date, nationality, match_date, season, result, home_team, playing_team, venue):
+
+def insert_into_common_tables(league_manager, name, position, birth_date, nationality, match_date, season, result, home_team, playing_team, venue):
     player_id = star_schema_manager.insert_into_table("player", {
         "name": name.replace("'", " "),
         "position": position,
         "birth_year": str(birth_date.year),
-        # "birth_month": birth_date.strftime("%B"),
         "nationality": nationality.replace("'", " ")
     })
 
@@ -63,20 +55,17 @@ def insert_into_common_tables(name, position, birth_date, nationality, match_dat
     return player_id, match_date_id, match_id, league_team_id
 
 
-def fill_in_lineup_fact_table():
+def fill_in_lineup_fact_table(league_manager):
     lineup_records = league_manager.query(dutch_lineup)
 
-
-    print(f"Processing {len(lineup_records)}.")
+    print(f"Processing netherlands lineups - {len(lineup_records)} records.")
     for i, record in enumerate(lineup_records[:]):
+        # print(record)
         result = get_result_by_code(record[8], record[5], record[6])
-        if(result==None):
-            #i+=1
-            continue
-        else:
-            result = league_manager.get_result_from_char(result)
+        if(result==None): continue
+        else: result = league_manager.get_result_from_char(result)
 
-        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
+        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(league_manager,
             name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[8], season=record[9],
             result=result, home_team=record[5], playing_team=record[7], venue=(record[10])
         )
@@ -90,39 +79,36 @@ def fill_in_lineup_fact_table():
         if not fetched_record:
             match_date_id = star_schema_manager.insert_into_table("lineup_fact_table", fact_table_content, id=None)
         else:
-            print(f"{i} Duplicate player, not inserting.")
+            # print(f"{i} Duplicate player, not inserting.")
+            pass
 
-        if i % 1000 == 0: print(f"{i} records done")
+        # if i % 1000 == 0: print(f"{i} records done")
 
 
-def fill_in_event_fact_table():
+def fill_in_event_fact_table(league_manager):
     records = league_manager.query(dutch_event)
 
-    print(f"Processing {len(records)}.")
-    for i, record in enumerate(records[:5]):
+    print(f"Processing netherlands events - {len(records)} records.")
+    for i, record in enumerate(records[:]):
         # print(record)
         result = get_result_by_code(record[4], record[7], record[8])
-        if(result==None):
-            #i+=1
-            continue
-        else:
-            result = league_manager.get_result_from_char(result)
+        if(result==None): continue
+        else: result = league_manager.get_result_from_char(result)
 
-        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(
+        player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(league_manager,
             name=record[0], position=record[1], birth_date=record[2], nationality=record[3], match_date=record[4], season=record[5],
             result=result, home_team=record[7], playing_team=record[9], venue=record[10]
         )
 
         minute = record[12],
+        # print(minute)
         half = record[13]
         event_time_id = star_schema_manager.insert_into_table("event_time", {
-            "time": str(minute),
-            "half": str(league_manager.get_half_from_minute(minute[0]))
+            "time": str(minute[0]),
+            "half": str(half)
         })
 
-        fact_table_fk_dict = {
-            "player_id": str(player_id), "match_date_id": str(match_date_id), "match_id": str(match_id), "league_team_id": str(league_team_id), "event_time_id": str(event_time_id),
-        }
+        fact_table_fk_dict = { "player_id": str(player_id), "match_date_id": str(match_date_id), "match_id": str(match_id), "league_team_id": str(league_team_id), "event_time_id": str(event_time_id), }
 
         event_type = record[11]
         fact_table_facts_dict = {
@@ -142,13 +128,11 @@ def fill_in_event_fact_table():
             match_date_id = star_schema_manager.insert_into_table("event_fact_table", fact_table_content, id=None)
         else:
             attribute_to_inc = star_schema_manager.get_dict_key_for_increment(fact_table_facts_dict, 1)
-            print(f"{i} Already in the fact table")
+            # print(f"{i} Already in the fact table")
             star_schema_manager.increment_attribute_in_record("event_fact_table", fact_table_fk_dict, attribute_to_inc)
-        if i % 1000 == 0: print(f"{i} records done")
-
-    league_manager.close_connection()
+        # if i % 1000 == 0: print(f"{i} records done")
 
 
 if __name__ == '__main__':
-    main()
+    # fill_in_netherlands_league()
     pass

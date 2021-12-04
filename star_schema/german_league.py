@@ -39,7 +39,7 @@ def insert_into_common_tables(league_manager, name, position, birth_date, nation
     })
 
     league_team_id = star_schema_manager.insert_into_table("league_team", {
-        "league_name": "Serie A",
+        "league_name": "Bundesliga",
         "team_name": playing_team
     })
 
@@ -185,8 +185,6 @@ def fill_in_event_fact_table(league_manager):
 
         # if i % 1000 == 0: print(f"{i} records done")
 
-
-    league_manager.close_connection()
 
 
 if __name__ == '__main__':

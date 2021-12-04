@@ -143,8 +143,6 @@ def fill_in_event_fact_table(league_manager):
             star_schema_manager.increment_attribute_in_record("event_fact_table", fact_table_fk_dict, attribute_to_inc)
         # if i % 1000 == 0: print(f"{i} records done")
 
-    league_manager.close_connection()
-
 
 if __name__ == '__main__':
     # fill_in_italian_league()
