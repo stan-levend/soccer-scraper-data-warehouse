@@ -46,7 +46,7 @@ italian_subs='''
             ON team_player.club_id=club.id
         JOIN event
             ON event.team_player_id=team_player.id
-                WHERE event.type = 'sub on' or event.type = 'sub off'
+                WHERE event.type = 'sub ON' or event.type = 'sub off'
     '''
 
 english_cards = '''
@@ -143,7 +143,7 @@ spain_goals_assists='''
                 ON goals.matchid=match.id
             JOIN player
                 ON goals.playerid=player.id
-            JOIN player as assist_player
+            left JOIN player as assist_player
                 ON goals.assistid=assist_player.id
             JOIN venue
                 ON match.venueid=venue.id
@@ -242,11 +242,11 @@ german_events = '''
 		JOIN bundesliga.venue
 			ON match.venue_id = venue.id
 
-	where event_type.name != 'injury' and event_type.name != 'back from injury'
+	WHERE event_type.name != 'injury' AND event_type.name != 'back from injury'
 '''
 
 german_linups = '''
-    select
+    SELECT
         CONCAT(player.firstname, ' ', player.lastname) as name,
         lineup.player_position,
         player.birthday,
@@ -260,15 +260,15 @@ german_linups = '''
         match.away_score,
         venue.name as venue
 
-    from bundesliga.lineup
-        join bundesliga.player
-            on player.id = lineup.player_id
-        join bundesliga.match
-            on match.id = lineup.match_id
-        join bundesliga.team
-            on team.id = lineup.team_id
-        join bundesliga.country
-            on team.country_id = country.id
+    FROM bundesliga.lineup
+        JOIN bundesliga.player
+            ON player.id = lineup.player_id
+        JOIN bundesliga.match
+            ON match.id = lineup.match_id
+        JOIN bundesliga.team
+            ON team.id = lineup.team_id
+        JOIN bundesliga.country
+            ON player.country_id = country.id
         JOIN bundesliga.team as club_home
             ON match.home_team_id = club_home.id
         JOIN bundesliga.team as club_away
@@ -321,7 +321,7 @@ german_subs = '''
 		JOIN bundesliga.venue
 			ON match.venue_id = venue.id
 
-	where event_type.name = 'substitution'
+	WHERE event_type.name = 'substitution'
 '''
 dutch_event='''
 SELECT player.name, lineup.pos,  player.birth_date, player.nation, match.kickoff_date, match.season, match.league, club_home.name as home_team, club_away.name as away_team, team.name, match.venue, event.event_type, event.event_min, event.half, lineup.minutes

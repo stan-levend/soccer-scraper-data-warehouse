@@ -18,7 +18,7 @@ def fill_in_spanish_league(league_manager):
     fill_in_event_fact_table_cards(league_manager)
     fill_in_event_fact_table_goals_assists(league_manager)
     fill_in_event_fact_table_substitutions(league_manager)
-    fill_in_lineup_fact_table(league_manager)
+    # fill_in_lineup_fact_table(league_manager)
 
     league_manager.close_connection()
     star_schema_manager.close_connection()
@@ -106,6 +106,9 @@ def fill_in_event_fact_table_goals_assists(league_manager):
     for i, record in enumerate(records[:]):
         # print(record)
         #GOALS
+        # if record[11] is None:
+        #     print("none")
+        # continue
         country = get_country_by_code(record[3])
         team = league_manager.get_team_by_matchdate_and_name(record[4], record[0])
         if team is None:
@@ -144,6 +147,8 @@ def fill_in_event_fact_table_goals_assists(league_manager):
             star_schema_manager.increment_attribute_in_record("event_fact_table", fact_table_fk_dict, attribute_to_inc)
 
         # ASSISTS
+        if record[11] is None:
+            continue
         country = get_country_by_code(record[14])
         player_id, match_date_id, match_id, league_team_id = insert_into_common_tables(league_manager,
             name=record[11].strip(), position=record[12].strip(), birth_date=record[13], nationality=country, match_date=record[4], season=record[8],

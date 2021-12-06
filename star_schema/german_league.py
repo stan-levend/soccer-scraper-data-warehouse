@@ -7,7 +7,7 @@ star_schema_manager = DatabaseManager('postgres', 'postgres', 'star_schema')
 
 def fill_in_german_league(league_manager):
 
-    fill_in_event_fact_table(league_manager)
+    # fill_in_event_fact_table(league_manager)
     fill_in_lineup_fact_table(league_manager)
 
     league_manager.close_connection()
